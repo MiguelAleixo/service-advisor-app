@@ -1,4 +1,4 @@
-package com.serviceadvisorapp.generated;
+package com.serviceadvisor.generated;
 
 import java.util.Arrays;
 import java.util.List;

@@ -1,8 +1,8 @@
 {
-  "name": "service-advisor-app",
-  "displayName": "service-advisor-app",
+  "name": "service-advisor",
+  "displayName": "service-advisor",
   "expo": {
-    "name": "service-advisor-app",
+    "name": "service-advisor",
     "slug": "expo-template-bare",
     "version": "1.0.0",
     "platforms": [

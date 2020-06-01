@@ -35,12 +35,12 @@ android_library(
 
 android_build_config(
     name = "build_config",
-    package = "com.serviceadvisorapp",
+    package = "com.serviceadvisor",
 )
 
 android_resource(
     name = "res",
-    package = "com.serviceadvisorapp",
+    package = "com.serviceadvisor",
     res = "src/main/res",
 )
 

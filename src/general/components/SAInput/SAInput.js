@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import InputMargin from './Styles';
+import { InputMargin, style } from './Styles';
 import { Item, Input } from 'native-base';
 
 export default class SAInput extends Component {
@@ -7,21 +7,20 @@ export default class SAInput extends Component {
         super(props);
     }
 
-    handlerInput = (value, field) => {
-        this.setState({ [field]: value })
-    }
-
     render() {
-        const { value, field } = this.props;
+        const { value, name, disabled, password, onChange } = this.props;
+        console.log(name)
 
         return (
             <InputMargin>
-                <Item style={{ marginLeft: 0 }}>
+                <Item style={style.noMargin}>
                     <Input
                         value={value}
-                        onChangeText={(value) => this.handlerInput(value, field)}
+                        disabled={disabled}
+                        onChangeText={onChange}
                         style={style.input}
-                        placeholder="Login" />
+                        secureTextEntry={password}
+                        placeholder={name} />
                 </Item>
             </InputMargin>
         );

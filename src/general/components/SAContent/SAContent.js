@@ -11,9 +11,9 @@ export default class SAContent extends Component {
         const { children } = this.props;
 
         return (
-            <Content contentContainerStyle={style.alignCenter}>
-                { children }
-            </Content>
+                <Content contentContainerStyle={style.alignCenter}>
+                    {children}
+                </Content>
         );
     }
 }

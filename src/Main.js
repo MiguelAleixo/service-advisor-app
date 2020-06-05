@@ -1,34 +1,36 @@
 import React from 'react';
-import { Container, Content, Button, Header, Left, Right, Body, Icon, Title } from 'native-base';
+
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 
-import Home from './screens/Home/Home'
-import Services from './screens/Services/Services'
-import Login from './screens/Login/Login'
-import Register from './screens/Register/Register'
+import Home from './screens/Home/Home';
+import Services from './screens/Services/Services';
+import MyServices from './screens/MyServices/MyServices';
+import Login from './screens/Login/Login';
+import Register from './screens/Register/Register';
 
 const Stack = createStackNavigator();
+const Drawer = createDrawerNavigator();
 
 export default function Main() {
     return (
 
-        false ? (
-
+        true ? (
             <NavigationContainer>
-                <Stack.Navigator>
-                    <Stack.Screen name="Home" component={Home} />
-                    <Stack.Screen name="Services" component={Services} />
-                </Stack.Navigator>
+                <Drawer.Navigator>
+                    <Drawer.Screen name="Home" component={Home} />
+                    <Drawer.Screen name="Services" component={Services} />
+                    <Drawer.Screen name="MyServices" component={MyServices} />
+                </Drawer.Navigator>
             </NavigationContainer>
+
         ) : (
-                // <Login />
-                // <Register />
                 <NavigationContainer>
-                    <Stack.Navigator>
-                        <Stack.Screen options={{headerShown: false}} name="Login" component={Login} />
-                        <Stack.Screen options={{headerShown: false}} name="Register" component={Register} />
-                    </Stack.Navigator>
+                    <Drawer.Navigator>
+                        <Drawer.Screen name="Login" component={Login} />
+                        <Drawer.Screen name="Register" component={Register} />
+                    </Drawer.Navigator>
                 </NavigationContainer>
             )
     );

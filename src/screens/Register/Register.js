@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { ScrollView } from 'react-native';
 import { style } from './Styles';
-import { Container, Form, Title, Subtitle } from 'native-base';
+import { Container, Form, Title } from 'native-base';
 import SAInput from '../../general/components/SAInput/SAInput';
 import SAButton from '../../general/components/SAButton/SAButton';
 import SAContent from '../../general/components/SAContent/SAContent';

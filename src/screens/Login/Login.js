@@ -22,7 +22,7 @@ export default class Login extends Component {
         const { navigation } = this.props;
 
         return (
-            <Container style={{ backgroundColor: '#455A64' }}>
+            <Container style={{ backgroundColor: '#263238' }}>
                 <SAContent>
                     <Form>
 

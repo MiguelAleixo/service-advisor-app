@@ -9,7 +9,6 @@ export default class SAInput extends Component {
 
     render() {
         const { value, name, disabled, password, onChange } = this.props;
-        console.log(name)
 
         return (
             <InputMargin>

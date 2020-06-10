@@ -8,18 +8,14 @@ export default class SAFooter extends Component {
         this.state = {
             buttons: [
                 {
-                    icon: 'hammer',
-                    title: 'Serviços',
-                    route: 'MyServices'
-                },
-                {
-                    icon: 'search',
-                    title: 'Pesquisar',
+                    icon: 'home',
+                    title: 'Início',
                     route: 'Services'
                 },
                 {
-                    icon: 'add',
-                    title: 'Novo'
+                    icon: 'hammer',
+                    title: 'Meus Serviços',
+                    route: 'MyServices'
                 },
                 {
                     icon: 'person',

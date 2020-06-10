@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
+import { Header, Left, Right, Body, Title } from 'native-base';
 import { style } from './Styles';
-import { Header, Title, Left, Right, Body, Button, Icon } from 'native-base';
 
 export default class SAHeader extends Component {
     constructor(props) {
@@ -8,21 +8,17 @@ export default class SAHeader extends Component {
     }
 
     render() {
-        const { title, icon, onPress } = this.props;
+        const { title } = this.props;
 
         return (
-            <Header style={style.header}>
-                <Left>
-                    {icon && (
-                        <Button transparent onPress={onPress}>
-                            <Icon name={icon} />
-                        </Button>
-                    )}
-                </Left>
-                <Body>
-                    <Title>{title}</Title>
+            <Header style={{ backgroundColor: '#263238' }}>
+                <Left style={style.flex}></Left>
+                <Body style={style.flex}>
+                    <Title>
+                        { title }
+                    </Title>
                 </Body>
-                <Right />
+                <Right style={style.flex}></Right>
             </Header>
         );
     }

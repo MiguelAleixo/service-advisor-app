@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
-import { Container, Content, Header, Title, Body, View, Fab, Icon, Left, Right,  } from 'native-base';
-import SAFooter from '../../general/components/SAFooter/SAFooter';
-import SALargeCard from '../../general/components/SALargeCard/SALargeCard';
-import SAHeader from '../../general/components/SAHeader/SAHeader';
+import { Card, CardItem, Thumbnail, Text, Button, Icon, Left, Body, Right } from 'native-base';
 
-export default class MyServices extends Component {
+export default class SALargeCard extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -37,43 +34,48 @@ export default class MyServices extends Component {
                     time: 8,
                     provider: 'Miguel Aleixo'
                 },
-                {
-                    name: 'Quebra paredes',
-                    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSZEFwJrp0VJvmfgObLhI5elxXoTKLPQ-uc15mo-y3p4lrBEbKd&usqp=CAU',
-                    description: 'Obras',
-                    category: '',
-                    avaliation: '3.9',
-                    time: 5,
-                    provider: 'Miguel Aleixo'
-                },
             ]
         }
     }
 
     render() {
-        const { navigation } = this.props;
-        const { services } = this.state;
+        const dataArray = [
+            { title: "Descrição", content: "Lorem ipsum dolor sit amet" },
+            { title: "Tempo", content: "1 Hora" },
+            { title: "Valor", content: "De R$10,00 a R$50,00" }
+        ];
+
+        const { image, name, avaliation } = this.props;
 
         return (
-            <Container style={{ backgroundColor: '#F5F5F5' }}>
-                <SAHeader title='Meus Serviços'/>
-                {/* <Content> */}
-                    {/* {services.map(obj => (
-                        <SALargeCard image={obj.image} name={obj.name} avaliation={obj.avaliation} />
-                    ))} */}
-                    <View style={{ flex: 1 }}>
-                         {/* {services.map(obj => (
-                        <SALargeCard image={obj.image} name={obj.name} avaliation={obj.avaliation} />
-                    ))} */}
-                        <Fab
-                            style={{ backgroundColor: '#FFC107' }}
-                            position="bottomRight">
-                            <Icon name="add" style={{ color: '#263238' }}/>
-                        </Fab>
-                    </View>
-                {/* </Content> */}
-                <SAFooter {...this.props} />
-            </Container>
+            <Card>
+                <CardItem>
+                    <Left>
+                        <Thumbnail square source={{ uri: image }} />
+                        <Body>
+                            <Text>{name}</Text>
+                            <Text note>Avaliação: {avaliation}</Text>
+                        </Body>
+                    </Left>
+                </CardItem>
+                {/* <CardItem>
+                    
+                </CardItem> */}
+                <CardItem>
+                    <Left>
+                        <Button transparent>
+                            <Icon name="create" style={{ color: '#263238'}}/>
+                            <Text style={{ color: '#263238'}}>Editar</Text>
+                        </Button>
+                    </Left>
+                    <Right>
+                        <Button transparent>
+                            <Icon name="trash" style={{ color: '#263238'}}/>
+                            <Text style={{ color: '#263238'}}>Remover</Text>
+                        </Button>
+                    </Right>
+                </CardItem>
+            </Card>
         );
     }
 }

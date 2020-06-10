@@ -19,9 +19,9 @@ export default function Main() {
         true ? (
             <NavigationContainer>
                 <Drawer.Navigator>
-                    <Drawer.Screen name="Home" component={Home} />
                     <Drawer.Screen name="Services" component={Services} />
                     <Drawer.Screen name="MyServices" component={MyServices} />
+                    <Drawer.Screen name="Home" component={Home} />
                 </Drawer.Navigator>
             </NavigationContainer>
 

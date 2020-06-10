@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Container, Header, Content, Card, CardItem, Thumbnail, Text, Button, Icon, Left, Body, Right, Footer, FooterTab } from 'native-base';
+import { Container, Content, Card, CardItem, Thumbnail, Text, Header, Item, Icon, Input, Button, Left, Body, Title, List, ListItem, Right,  } from 'native-base';
 import SAFooter from '../../general/components/SAFooter/SAFooter';
-import SAInput from '../../general/components/SAInput/SAInput';
+import SAHeader from '../../general/components/SAHeader/SAHeader';
 
 export default class Services extends Component {
     constructor(props) {
@@ -109,26 +109,69 @@ export default class Services extends Component {
         const uri = "https://images3.alphacoders.com/823/thumb-1920-82317.jpg";
 
         return (
-            <Container style={{ backgroundColor: '#CFD8DC' }}>
-                {/* <SAHeader onPress={() => navigation.openDrawer()} title="Serviços" icon="menu" /> */}
-                <SAInput name='Pesquisar serviço' field='search' value={search} onChange={(search) => this.handlerInput(search, 'search')} />
+            <Container style={{ backgroundColor: '#F5F5F5' }}>
+                <SAHeader title='Serviços'/>
+                <Header searchBar rounded style={{ backgroundColor: '#263238' }}>
+                    <Item>
+                        <Icon name="search" />
+                        <Input placeholder="Pesquisar serviço" />
+                        <Icon name="hammer" />
+                    </Item>
+                    <Button transparent>
+                        <Text>Pesquisar serviço</Text>
+                    </Button>
+                </Header>
                 <Content>
                     {services.map(obj => (
-                        <Card>
-                            <CardItem>
-                                <Left>
-                                    <Thumbnail square source={{ uri: obj.image }} />
-                                    <Body>
-                                        <Text>{obj.name}</Text>
-                                        <Text note>{obj.provider}</Text>
-                                        <Text note>Avaliação: {obj.avaliation}</Text>
-                                    </Body>
-                                </Left>
-                            </CardItem>
-                        </Card>
+                        // <Card style={{ padding: 0}}>
+                        //     <CardItem>
+                        //         <Left>
+                        //             <Thumbnail square source={{ uri: obj.image }} />
+                        //             <Body>
+                        //                 <Text>{obj.name}</Text>
+                        //                 <Text note>{obj.provider}</Text>
+                        //                 <Text note>Avaliação: {obj.avaliation}</Text>
+                        //             </Body>
+                        //         </Left>
+                        //     </CardItem>
+                        // </Card>
+                        <List>
+                        <ListItem thumbnail>
+                            <Left>
+                                <Thumbnail square source={{ uri: obj.image }} />
+                            </Left>
+                            <Body>
+                                <Text>{ obj.name }</Text>
+                                <Text note>{obj.provider}</Text>
+                                <Text note>Avaliação: {obj.avaliation}</Text>
+                            </Body>
+                            <Right>
+                                <Button transparent>
+                                    <Text>Ver mais...</Text>
+                                </Button>
+                            </Right>
+                        </ListItem>
+                    </List>
                     ))}
+
+                    {/* <List>
+                        <ListItem thumbnail>
+                            <Left>
+                                <Thumbnail square source={{ uri: uri }} />
+                            </Left>
+                            <Body>
+                                <Text>Sankhadeep</Text>
+                                <Text note numberOfLines={1}>Its time to build a difference . .</Text>
+                            </Body>
+                            <Right>
+                                <Button transparent>
+                                    <Text>View</Text>
+                                </Button>
+                            </Right>
+                        </ListItem>
+                    </List> */}
                 </Content>
-                <SAFooter {...this.props}/>
+                <SAFooter {...this.props} />
             </Container>
         );
     }

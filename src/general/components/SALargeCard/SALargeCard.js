@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { Card, CardItem, Thumbnail, Text, Button, Icon, Left, Body, Right } from 'native-base';
+import { style, Flex } from './Styles';
+import { Card, CardItem, Thumbnail, Text, Button, Icon, Left, Body, Right, Image } from 'native-base';
 
 export default class SALargeCard extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            search: '',
             services: [
                 {
                     name: 'Encanação',
@@ -39,41 +39,27 @@ export default class SALargeCard extends Component {
     }
 
     render() {
-        const dataArray = [
-            { title: "Descrição", content: "Lorem ipsum dolor sit amet" },
-            { title: "Tempo", content: "1 Hora" },
-            { title: "Valor", content: "De R$10,00 a R$50,00" }
-        ];
 
-        const { image, name, avaliation } = this.props;
+        const { image, name, time } = this.props;
 
         return (
-            <Card>
-                <CardItem>
+            <Card style={style.card}>
+                <CardItem style={style.card}>
                     <Left>
                         <Thumbnail square source={{ uri: image }} />
-                        <Body>
-                            <Text>{name}</Text>
-                            <Text note>Avaliação: {avaliation}</Text>
+                        <Body style={style.border}>
+                            <Text style={style.text}>{name}</Text>
+
+                            <Text note style={style.noMargin}> {time}hr </Text>
+
                         </Body>
                     </Left>
-                </CardItem>
-                {/* <CardItem>
-                    
-                </CardItem> */}
-                <CardItem>
-                    <Left>
-                        <Button transparent>
-                            <Icon name="create" style={{ color: '#263238'}}/>
-                            <Text style={{ color: '#263238'}}>Editar</Text>
-                        </Button>
-                    </Left>
-                    <Right>
-                        <Button transparent>
-                            <Icon name="trash" style={{ color: '#263238'}}/>
-                            <Text style={{ color: '#263238'}}>Remover</Text>
-                        </Button>
-                    </Right>
+                    <Button transparent>
+                        <Icon name='create' />
+                    </Button>
+                    <Button transparent>
+                        <Icon name='trash' />
+                    </Button>
                 </CardItem>
             </Card>
         );

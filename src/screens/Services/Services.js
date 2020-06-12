@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { Container, Content, Card, CardItem, Thumbnail, Text, Header, Item, Icon, Input, Button, Left, Body, Title, List, ListItem, Right,  } from 'native-base';
+import { Container, Content, Card, CardItem, Thumbnail, Text, Header, Item, Icon, Input, Button, Left, Body, Title, List, ListItem, Right, } from 'native-base';
 import SAFooter from '../../general/components/SAFooter/SAFooter';
 import SAHeader from '../../general/components/SAHeader/SAHeader';
+import SACard from '../../general/components/SACard/SACard';
 
 export default class Services extends Component {
     constructor(props) {
@@ -16,7 +17,8 @@ export default class Services extends Component {
                     category: 'Tecnologia',
                     avaliation: '4.9',
                     time: 1,
-                    provider: 'Miguel Aleixo'
+                    provider: 'Miguel Aleixo',
+                    time: 2
                 },
                 {
                     name: 'Instalação de chuveiro',
@@ -25,7 +27,8 @@ export default class Services extends Component {
                     category: 'Doméstico',
                     avaliation: '5.0',
                     time: 1,
-                    provider: 'Helena Oliveira'
+                    provider: 'Helena Oliveira',
+                    time: 2
                 },
                 {
                     name: 'Encanação',
@@ -34,7 +37,8 @@ export default class Services extends Component {
                     category: 'Doméstico',
                     avaliation: '4.5',
                     time: 1,
-                    provider: 'Zé Roberto'
+                    provider: 'Zé Roberto',
+                    time: 2
                 },
                 {
                     name: 'Quebra paredes',
@@ -43,7 +47,8 @@ export default class Services extends Component {
                     category: '',
                     avaliation: '3.9',
                     time: 5,
-                    provider: 'Miguel Aleixo'
+                    provider: 'Miguel Aleixo',
+                    time: 2
                 },
                 {
                     name: 'Pintura de parede',
@@ -52,7 +57,8 @@ export default class Services extends Component {
                     category: '',
                     avaliation: '4.9',
                     time: 8,
-                    provider: 'Miguel Aleixo'
+                    provider: 'Miguel Aleixo',
+                    time: 2
                 },
                 {
                     name: 'Backup de Dados',
@@ -61,7 +67,8 @@ export default class Services extends Component {
                     category: 'Tecnologia',
                     avaliation: '4.9',
                     time: 1,
-                    provider: 'Miguel Aleixo'
+                    provider: 'Miguel Aleixo',
+                    time: 2
                 },
                 {
                     name: 'Instalação de chuveiro',
@@ -70,7 +77,8 @@ export default class Services extends Component {
                     category: 'Doméstico',
                     avaliation: '5.0',
                     time: 1,
-                    provider: 'Helena Oliveira'
+                    provider: 'Helena Oliveira',
+                    time: 2
                 },
                 {
                     name: 'Encanação',
@@ -79,7 +87,8 @@ export default class Services extends Component {
                     category: 'Doméstico',
                     avaliation: '4.5',
                     time: 1,
-                    provider: 'Zé Roberto'
+                    provider: 'Zé Roberto',
+                    time: 2
                 },
                 {
                     name: 'Quebra paredes',
@@ -88,7 +97,8 @@ export default class Services extends Component {
                     category: '',
                     avaliation: '3.9',
                     time: 5,
-                    provider: 'Miguel Aleixo'
+                    provider: 'Miguel Aleixo',
+                    time: 2
                 },
                 {
                     name: 'Pintura de parede',
@@ -97,7 +107,8 @@ export default class Services extends Component {
                     category: '',
                     avaliation: '4.9',
                     time: 8,
-                    provider: 'Miguel Aleixo'
+                    provider: 'Miguel Aleixo',
+                    time: 2
                 },
             ]
         }
@@ -110,7 +121,7 @@ export default class Services extends Component {
 
         return (
             <Container style={{ backgroundColor: '#F5F5F5' }}>
-                <SAHeader title='Serviços'/>
+                {/* <SAHeader title='Serviços' /> */}
                 <Header searchBar rounded style={{ backgroundColor: '#263238' }}>
                     <Item>
                         <Icon name="search" />
@@ -121,9 +132,10 @@ export default class Services extends Component {
                         <Text>Pesquisar serviço</Text>
                     </Button>
                 </Header>
-                <Content>
+                <Content style={{ marginHorizontal: 10 }} showsVerticalScrollIndicator={false}>
                     {services.map(obj => (
-                        // <Card style={{ padding: 0}}>
+                        <SACard name={obj.name} image={obj.image} avaliation={obj.avaliation} provider={obj.provider} time={obj.time}/>
+                        // <Card>
                         //     <CardItem>
                         //         <Left>
                         //             <Thumbnail square source={{ uri: obj.image }} />
@@ -135,41 +147,25 @@ export default class Services extends Component {
                         //         </Left>
                         //     </CardItem>
                         // </Card>
-                        <List>
-                        <ListItem thumbnail>
-                            <Left>
-                                <Thumbnail square source={{ uri: obj.image }} />
-                            </Left>
-                            <Body>
-                                <Text>{ obj.name }</Text>
-                                <Text note>{obj.provider}</Text>
-                                <Text note>Avaliação: {obj.avaliation}</Text>
-                            </Body>
-                            <Right>
-                                <Button transparent>
-                                    <Text>Ver mais...</Text>
-                                </Button>
-                            </Right>
-                        </ListItem>
-                    </List>
-                    ))}
 
-                    {/* <List>
-                        <ListItem thumbnail>
-                            <Left>
-                                <Thumbnail square source={{ uri: uri }} />
-                            </Left>
-                            <Body>
-                                <Text>Sankhadeep</Text>
-                                <Text note numberOfLines={1}>Its time to build a difference . .</Text>
-                            </Body>
-                            <Right>
-                                <Button transparent>
-                                    <Text>View</Text>
-                                </Button>
-                            </Right>
-                        </ListItem>
-                    </List> */}
+                        // <List>
+                        //     <ListItem thumbnail>
+                        //         <Left>
+                        //             <Thumbnail square source={{ uri: obj.image }} />
+                        //         </Left>
+                        //         <Body>
+                        //             <Text>{obj.name}</Text>
+                        //             <Text note>{obj.provider}</Text>
+                        //             <Text note>Avaliação: {obj.avaliation}</Text>
+                        //         </Body>
+                        //         <Right>
+                        //             <Button transparent>
+                        //                 <Text>Ver mais...</Text>
+                        //             </Button>
+                        //         </Right>
+                        //     </ListItem>
+                        // </List>
+                    ))}
                 </Content>
                 <SAFooter {...this.props} />
             </Container>

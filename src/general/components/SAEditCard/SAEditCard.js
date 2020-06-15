@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { style, Flex } from './Styles';
 import { Card, CardItem, Thumbnail, Text, Button, Icon, Left, Body, Right, Image } from 'native-base';
 
-export default class SALargeCard extends Component {
+export default class SAEditCard extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -55,10 +55,10 @@ export default class SALargeCard extends Component {
                         </Body>
                     </Left>
                     <Button transparent>
-                        <Icon name='create' />
+                        <Icon style={style.icon} name='create' />
                     </Button>
                     <Button transparent>
-                        <Icon name='trash' />
+                        <Icon style={style.icon} name='trash' />
                     </Button>
                 </CardItem>
             </Card>

@@ -4,7 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 
 import Services from './screens/Services/Services';
-import MyServices from './screens/MyServices/MyServices';
+import Routes from './screens/MyServices/Routes';
 import Login from './screens/Login/Login';
 import Register from './screens/Register/Register';
 
@@ -17,7 +17,7 @@ export default function Main() {
             <NavigationContainer>
                 <Drawer.Navigator>
                     <Drawer.Screen name="Services" component={Services} />
-                    <Drawer.Screen name="MyServices" component={MyServices} />
+                    <Drawer.Screen name="MyServices" component={Routes} />
                 </Drawer.Navigator>
             </NavigationContainer>
 

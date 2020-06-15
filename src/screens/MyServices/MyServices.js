@@ -1,13 +1,8 @@
 import React, { Component } from 'react';
-import { Container, Content, Header, Title, Body, View, Fab, Icon, Left, Right, } from 'native-base';
-import { NavigationContainer } from '@react-navigation/native';
-import { createDrawerNavigator } from '@react-navigation/drawer';
-import SAFooter from '../../general/components/SAFooter/SAFooter';
-import SALargeCard from '../../general/components/SALargeCard/SALargeCard';
+import { Container, Content, Fab, Icon } from 'native-base';
+import SAEditCard from '../../general/components/SAEditCard/SAEditCard';
 import SAHeader from '../../general/components/SAHeader/SAHeader';
 
-
-const Drawer = createDrawerNavigator();
 
 export default class MyServices extends Component {
     constructor(props) {
@@ -60,30 +55,24 @@ export default class MyServices extends Component {
         const { services } = this.state;
 
         return (
-            <NavigationContainer independent={true}>
-                <Drawer.Navigator>
-                    <Drawer.Screen name="Teste" component={() => (
-                        <Container style={{ backgroundColor: '#F5F5F5' }}>
-                            <SAHeader title='Meus Serviços' />
-                            <Content style={{ marginHorizontal: 12 }} showsVerticalScrollIndicator={false}>
-                                {services.map(obj => (
-                                    <SALargeCard
-                                        image={obj.image}
-                                        name={obj.name}
-                                        avaliation={obj.avaliation}
-                                        time={obj.time} />
-                                ))}
-                            </Content>
-                            <Fab
-                                style={{ backgroundColor: '#FFC107', bottom: 50 }}
-                                position="bottomRight">
-                                <Icon name="add" style={{ color: '#263238' }} />
-                            </Fab>
-                            <SAFooter {...this.props} />
-                        </Container>
-                    )} />
-                </Drawer.Navigator>
-            </NavigationContainer>
+            <Container style={{ backgroundColor: '#F5F5F5' }}>
+                <SAHeader title='Meus Serviços' />
+                <Content style={{ marginHorizontal: 10 }} showsVerticalScrollIndicator={false}>
+                    {services.map(obj => (
+                        <SAEditCard
+                            image={obj.image}
+                            name={obj.name}
+                            avaliation={obj.avaliation}
+                            time={obj.time} />
+                    ))}
+                </Content>
+                <Fab
+                    onPress={() => navigation.navigate('InfoService')}
+                    style={{ backgroundColor: '#FFC107' }}
+                    position="bottomRight">
+                    <Icon name="add" style={{ color: '#263238' }} />
+                </Fab>
+            </Container>
         );
     }
 }

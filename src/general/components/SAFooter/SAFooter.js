@@ -10,16 +10,19 @@ export default class SAFooter extends Component {
                 {
                     icon: 'home',
                     title: 'Início',
-                    route: 'Services'
+                    route: 'Services',
+                    type: 'AntDesign'
                 },
                 {
                     icon: 'hammer',
                     title: 'Meus Serviços',
-                    route: 'MyServices'
+                    route: 'MyServices',
+                    type: 'Ionicons'
                 },
                 {
-                    icon: 'person',
-                    title: 'Perfil'
+                    icon: 'user',
+                    title: 'Perfil',
+                    type: 'AntDesign'
                 }
             ]
         }
@@ -39,6 +42,7 @@ export default class SAFooter extends Component {
                                 style={(route.name !== obj.route) ? style.button : style.buttonActive}
                                 onPress={() => navigation.navigate(obj.route)} vertical>
                                 <Icon
+                                    type={obj.type}
                                     style={(route.name !== obj.route) ? style.icon : style.iconActive} name={obj.icon} />
                                 <Text style={(route.name !== obj.route) ? style.title : style.titleActive}>{obj.title}</Text>
                             </Button>

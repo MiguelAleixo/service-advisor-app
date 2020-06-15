@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Header, Left, Right, Body, Title } from 'native-base';
+import { Header, Left, Right, Body, Title, Button, Icon } from 'native-base';
 import { style } from './Styles';
 
 export default class SAHeader extends Component {
@@ -12,13 +12,15 @@ export default class SAHeader extends Component {
 
         return (
             <Header style={{ backgroundColor: '#263238' }}>
-                <Left style={style.flex}></Left>
-                <Body style={style.flex}>
-                    <Title>
-                        { title }
-                    </Title>
+                <Left>
+                    <Button transparent>
+                        <Icon name='arrow-back' />
+                    </Button>
+                </Left>
+                <Body>
+                    <Title>{title}</Title>
                 </Body>
-                <Right style={style.flex}></Right>
+                <Right />
             </Header>
         );
     }

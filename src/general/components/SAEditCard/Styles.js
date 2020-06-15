@@ -25,5 +25,8 @@ export const style = {
     card: {
         borderRadius: 6,
         padding: 0
+    },
+    icon: {
+        color: '#263238'
     }
 };

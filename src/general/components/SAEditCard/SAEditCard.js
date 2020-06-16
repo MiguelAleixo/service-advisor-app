@@ -40,7 +40,7 @@ export default class SAEditCard extends Component {
 
     render() {
 
-        const { image, name, time } = this.props;
+        const { image, name, time, onEdit, onRemove } = this.props;
 
         return (
             <Card style={style.card}>
@@ -54,10 +54,10 @@ export default class SAEditCard extends Component {
 
                         </Body>
                     </Left>
-                    <Button transparent>
+                    <Button transparent onPress={onEdit}>
                         <Icon style={style.icon} name='create' />
                     </Button>
-                    <Button transparent>
+                    <Button transparent onPress={onRemove}>
                         <Icon style={style.icon} name='trash' />
                     </Button>
                 </CardItem>

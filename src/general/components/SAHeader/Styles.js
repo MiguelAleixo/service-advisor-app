@@ -1,13 +1,6 @@
 export const style = {
-    flex: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center'
+    header: {
+        backgroundColor: '#263238'
     },
-    left: {
-        flex: 1,
-        justifyContent: 'flex-start',
-        alignItems: 'center'
-    }
 }
 

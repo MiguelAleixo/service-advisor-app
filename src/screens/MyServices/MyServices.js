@@ -63,7 +63,9 @@ export default class MyServices extends Component {
                             image={obj.image}
                             name={obj.name}
                             avaliation={obj.avaliation}
-                            time={obj.time} />
+                            time={obj.time}
+                            onEdit={() => navigation.navigate('InfoService', { teste: true })}
+                            onRemove={() => console.log('remover')} />
                     ))}
                 </Content>
                 <Fab

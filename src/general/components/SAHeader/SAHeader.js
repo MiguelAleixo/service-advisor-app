@@ -8,14 +8,16 @@ export default class SAHeader extends Component {
     }
 
     render() {
-        const { title } = this.props;
+        const { title, onPress } = this.props;
 
         return (
-            <Header style={{ backgroundColor: '#263238' }}>
+            <Header style={style.header}>
                 <Left>
-                    <Button transparent>
-                        <Icon name='arrow-back' />
-                    </Button>
+                    {onPress && (
+                        <Button transparent onPress={onPress}>
+                            <Icon name='arrow-back' />
+                        </Button>
+                    )}
                 </Left>
                 <Body>
                     <Title>{title}</Title>

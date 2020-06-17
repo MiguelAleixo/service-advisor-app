@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { Container, Content, Text, Header, Item, Icon, Input, Button } from 'native-base';
-import SAFooter from '../../general/components/SAFooter/SAFooter';
-import SACard from '../../general/components/SACard/SACard';
+import { Container, Content } from 'native-base';
+import SACardImage from '../../general/components/SACardImage/SACardImage';
+import SAHeader from '../../general/components/SAHeader/SAHeader';
+import SAButton from '../../general/components/SAButton/SAButton';
 
-export default class Services extends Component {
+export default class ServicesDetail extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -115,34 +116,26 @@ export default class Services extends Component {
     }
 
     render() {
-        const { navigation } = this.props;
+        const { navigation, route } = this.props;
+        const obj = route.params;
         const { services, search, modalVisible } = this.state;
-        const uri = "https://images3.alphacoders.com/823/thumb-1920-82317.jpg";
+
+        console.log('props', obj);
 
         return (
             <Container style={{ backgroundColor: '#F5F5F5' }}>
-                <Header searchBar rounded style={{ backgroundColor: '#263238' }}>
-                    <Item>
-                        <Icon name="search" />
-                        <Input placeholder="Pesquisar serviço" />
-                        <Icon name="hammer" />
-                    </Item>
-                    <Button transparent>
-                        <Text>Pesquisar serviço</Text>
-                    </Button>
-                </Header>
+                <SAHeader title={obj.name} onPress={() => navigation.navigate('Services')} />
                 <Content style={{ marginHorizontal: 10 }} showsVerticalScrollIndicator={false}>
-                    {services.map(obj => (
-                        <SACard
-                            name={obj.name}
-                            image={obj.image}
-                            avaliation={obj.avaliation}
-                            provider={obj.provider}
-                            time={obj.time}
-                            value={obj.value}
-                            onPress={() => navigation.navigate('ServiceDetail', obj)} />
-                    ))}
+                    <SACardImage
+                        name={obj.name}
+                        image={obj.image}
+                        avaliation={obj.avaliation}
+                        provider={obj.provider}
+                        time={obj.time}
+                        value={obj.value} />
                 </Content>
+                <SAButton name='Quero esse serviço!'
+                    onPress={() => console.log(this.state)} />
             </Container>
         );
     }

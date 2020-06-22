@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Circle, Text } from './Styles';
+import { Circle, Text, SmallCircle, SmallText } from './Styles';
 
 export default class SAAvaliation extends Component {
     constructor(props) {
@@ -7,11 +7,17 @@ export default class SAAvaliation extends Component {
     }
 
     render() {
-        const { avaliation } = this.props;
+        const { avaliation, small } = this.props;
         return (
-            <Circle>
-                <Text> { avaliation } </Text>
-            </Circle>
+            !small ? (
+                <Circle>
+                    <Text> {avaliation} </Text>
+                </Circle>
+            ) : (
+                    <SmallCircle>
+                        <SmallText> {avaliation} </SmallText>
+                    </SmallCircle>
+                )
         );
     }
 }

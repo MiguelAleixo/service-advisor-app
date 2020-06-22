@@ -115,10 +115,14 @@ export default class ServicesDetail extends Component {
         }
     }
 
+    componentDidMount() {
+        // this.props.carai()
+    }
+
     render() {
         const { navigation, route } = this.props;
         const obj = route.params;
-        const { services, search, modalVisible } = this.state;
+        const { services, search } = this.state;
 
         console.log('props', obj);
 

@@ -1,3 +1,12 @@
+import styled from 'styled-components';
+
+export const Text = styled.Text`
+    color: #212121;
+    font-weight: bold;
+    font-size: 16px;
+    margin: 0
+`;
+
 export const style = {
     noMargin: {
         marginRight: 0

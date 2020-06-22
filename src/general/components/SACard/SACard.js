@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { TouchableOpacity } from 'react-native';
 import { style, Flex } from './Styles';
-import { Card, CardItem, Left, Thumbnail, Body, Text, Right } from 'native-base';
+import { Card, CardItem, Left, Thumbnail, Body, Text } from 'native-base';
 import SAAvaliation from '../SAAvaliation/SAAvaliation';
 
 export default class SACard extends Component {

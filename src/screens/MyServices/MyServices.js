@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Container, Content, Fab, Icon } from 'native-base';
 import SAEditCard from '../../general/components/SAEditCard/SAEditCard';
 import SAHeader from '../../general/components/SAHeader/SAHeader';
+import SAFooter from '../../general/components/SAFooter/SAFooter';
 
 
 export default class MyServices extends Component {
@@ -55,26 +56,29 @@ export default class MyServices extends Component {
         const { services } = this.state;
 
         return (
-            <Container style={{ backgroundColor: '#F5F5F5' }}>
-                <SAHeader title='Meus Serviços' />
-                <Content style={{ marginHorizontal: 10 }} showsVerticalScrollIndicator={false}>
-                    {services.map(obj => (
-                        <SAEditCard
-                            image={obj.image}
-                            name={obj.name}
-                            avaliation={obj.avaliation}
-                            time={obj.time}
-                            onEdit={() => navigation.navigate('InfoService', { teste: true })}
-                            onRemove={() => console.log('remover')} />
-                    ))}
-                </Content>
-                <Fab
-                    onPress={() => navigation.navigate('InfoService')}
-                    style={{ backgroundColor: '#FFC107' }}
-                    position="bottomRight">
-                    <Icon name="add" style={{ color: '#263238' }} />
-                </Fab>
-            </Container>
+            <>
+                <Container style={{ backgroundColor: '#F5F5F5' }}>
+                    <SAHeader title='Meus Serviços' />
+                    <Content style={{ marginHorizontal: 10 }} showsVerticalScrollIndicator={false}>
+                        {services.map(obj => (
+                            <SAEditCard
+                                image={obj.image}
+                                name={obj.name}
+                                avaliation={obj.avaliation}
+                                time={obj.time}
+                                onEdit={() => navigation.navigate('InfoService', { teste: true })}
+                                onRemove={() => console.log('remover')} />
+                        ))}
+                    </Content>
+                    <Fab
+                        onPress={() => navigation.navigate('InfoService')}
+                        style={{ backgroundColor: '#FFC107' }}
+                        position="bottomRight">
+                        <Icon name="add" style={{ color: '#263238' }} />
+                    </Fab>
+                </Container>
+                <SAFooter {...this.props} />
+            </>
         );
     }
 }

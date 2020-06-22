@@ -3,6 +3,7 @@ import { Container, Content, Fab, Icon, Textarea, Picker, Form } from 'native-ba
 import SAInput from '../../general/components/SAInput/SAInput';
 import SAHeader from '../../general/components/SAHeader/SAHeader';
 import SADropDown from '../../general/components/SADropDown/SADropDown';
+import SATextArea from '../../general/components/SATextArea/SATextArea';
 
 
 export default class InfoService extends Component {
@@ -13,7 +14,7 @@ export default class InfoService extends Component {
             nome: '',
             tempo: '',
             descricao: '',
-            items: [
+            types: [
                 {
                     id: 1,
                     name: 'Obras'
@@ -26,24 +27,63 @@ export default class InfoService extends Component {
                     id: 3,
                     name: 'Saúde e beleza'
                 }
+            ],
+            values: [
+                {
+                    id: 4,
+                    name: 'A combinar'
+                },
+                {
+                    id: 1,
+                    name: 'R$25,00 - R$50,00'
+                },
+                {
+                    id: 2,
+                    name: 'R$50,00 - R$75,00'
+                },
+                {
+                    id: 3,
+                    name: 'R$100,00 - R$150,00'
+                },
+                {
+                    id: 3,
+                    name: 'R$150,00 - R$200,00'
+                },
+            ],
+            time: [
+                {
+                    id: 4,
+                    name: 'A combinar'
+                },
+                {
+                    id: 1,
+                    name: 'até 1 hora'
+                },
+                {
+                    id: 2,
+                    name: '1 - 2 horas'
+                },
+                {
+                    id: 3,
+                    name: '2 - 5 horas'
+                }
             ]
         }
     }
 
     render() {
-        const { categoria, nome, tempo, descricao, items } = this.state;
+        const { categoria, nome, tempo, descricao, types, values, time } = this.state;
         const { navigation } = this.props;
 
         return (
             <Container style={{ backgroundColor: '#F5F5F5' }}>
                 <SAHeader title='Novo serviço' onPress={() => navigation.navigate('MyServices')} />
                 <Content style={{ marginHorizontal: 12 }} showsVerticalScrollIndicator={false}>
-                    <SADropDown items={items}/>
-                    {/* <SAInput name='Categoria' field='categoria' value={categoria} onChange={(categoria) => this.handlerInput(categoria, 'categoria')} />
-                    <SAInput name='Nome' field='nome' value={nome} onChange={(nome) => this.handlerInput(nome, 'nome')} />
-                    <SAInput name='Tempo' field='tempo' value={tempo} onChange={(tempo) => this.handlerInput(tempo, 'tempo')} />
-                    <SAInput name='Descrição' field='descricao' value={descricao} onChange={(descricao) => this.handlerInput(descricao, 'descricao')} />
-                    <Textarea style={{ backgroundColor: '#FFFF' }} rowSpan={4} bordered placeholder="Textarea" /> */}
+                    <SAInput name='Nome' field='nome' placeholder='ex: Troca de resistência' value={nome} onChange={(nome) => this.handlerInput(nome, 'nome')} />
+                    <SADropDown name='Categoria' items={types}/>
+                    <SADropDown name='Valor' items={values}/>
+                    <SADropDown name='Tempo' items={time}/>
+                    <SATextArea name='Descrição'/>
                 </Content>
 
                 <Fab

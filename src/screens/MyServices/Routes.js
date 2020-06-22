@@ -16,20 +16,15 @@ export default class Routes extends Component {
         const { navigation } = this.props;
 
         return (
-            <>
-                <NavigationContainer independent={true}>
-                    <Drawer.Navigator>
-                        <Drawer.Screen
-                            name="MyServices" component={MyServices}
-                        />
+            <Drawer.Navigator>
+                <Drawer.Screen
+                    name="MyServices" component={MyServices}
+                />
 
-                        <Drawer.Screen
-                            name="InfoService" component={InfoService}
-                        />
-                    </Drawer.Navigator>
-                </NavigationContainer>
-                <SAFooter {...this.props} />
-            </>
+                <Drawer.Screen
+                    name="InfoService" component={InfoService}
+                />
+            </Drawer.Navigator>
         );
     }
 }

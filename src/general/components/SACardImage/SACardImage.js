@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Image } from 'react-native';
-import { Card, CardItem, Text, Button, Icon, Left, Body, Right } from 'native-base';
-import { style } from './Styles';
+import { Card, CardItem, Button, Icon, Text, Left, Body, Right } from 'native-base';
+import { style, Text as SAText } from './Styles';
 import SAAvaliation from '../SAAvaliation/SAAvaliation';
 
 export default class SACardImage extends Component {
@@ -18,22 +18,25 @@ export default class SACardImage extends Component {
                     <Image style={style.card} source={{ uri: image }} style={{ height: 200, width: null, flex: 1 }} />
                 </CardItem>
                 <CardItem bordered>
-                    <Text>Prestador: {provider}</Text>
+                    <SAText>Avaliação: </SAText>
+                    <SAAvaliation small avaliation={avaliation} />
                 </CardItem>
                 <CardItem bordered>
-                    <Text>Avaliação: </Text>
-                    <SAAvaliation avaliation={avaliation} />
+                    <SAText>Prestador: </SAText>
+                    <Text note style={{ fontSize: 16 }}> {provider} </Text>
                 </CardItem>
                 <CardItem bordered>
-                    <Text>Tempo: {time}hr</Text>
+                    <SAText>Tempo: </SAText>
+                    <Text note style={{ fontSize: 16 }}> {time}hr </Text>
                 </CardItem>
                 <CardItem bordered>
-                    <Text>Valor: R${value},00</Text>
+                    <SAText>Valor: </SAText>
+                    <Text note style={{ fontSize: 16 }}> R${value},00 </Text>
                 </CardItem>
                 <CardItem bordered>
                     <Body>
-                        <Text>
-                            Descrição:
+                        <SAText>Descrição: </SAText>
+                        <Text note style={{ fontSize: 16 }}>
                             t is a long established fact that a reader will be distracted by
                             the readable content of a page when looking at its layout. The point
                             of using Lorem Ipsum is that it has a more-or-less normal distribution

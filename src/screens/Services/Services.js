@@ -114,36 +114,43 @@ export default class Services extends Component {
         }
     }
 
+    componentDidMount() {
+        // this.props.carai()
+    }
+
     render() {
         const { navigation } = this.props;
         const { services, search, modalVisible } = this.state;
         const uri = "https://images3.alphacoders.com/823/thumb-1920-82317.jpg";
 
         return (
-            <Container style={{ backgroundColor: '#F5F5F5' }}>
-                <Header searchBar rounded style={{ backgroundColor: '#263238' }}>
-                    <Item>
-                        <Icon name="search" />
-                        <Input placeholder="Pesquisar serviço" />
-                        <Icon name="hammer" />
-                    </Item>
-                    <Button transparent>
-                        <Text>Pesquisar serviço</Text>
-                    </Button>
-                </Header>
-                <Content style={{ marginHorizontal: 10 }} showsVerticalScrollIndicator={false}>
-                    {services.map(obj => (
-                        <SACard
-                            name={obj.name}
-                            image={obj.image}
-                            avaliation={obj.avaliation}
-                            provider={obj.provider}
-                            time={obj.time}
-                            value={obj.value}
-                            onPress={() => navigation.navigate('ServiceDetail', obj)} />
-                    ))}
-                </Content>
-            </Container>
+            <>
+                <Container style={{ backgroundColor: '#F5F5F5' }}>
+                    <Header searchBar rounded style={{ backgroundColor: '#263238' }}>
+                        <Item>
+                            <Icon name="search" />
+                            <Input placeholder="Pesquisar serviço" />
+                            <Icon name="hammer" />
+                        </Item>
+                        <Button transparent>
+                            <Text>Pesquisar serviço</Text>
+                        </Button>
+                    </Header>
+                    <Content style={{ marginHorizontal: 10 }} showsVerticalScrollIndicator={false}>
+                        {services.map(obj => (
+                            <SACard
+                                name={obj.name}
+                                image={obj.image}
+                                avaliation={obj.avaliation}
+                                provider={obj.provider}
+                                time={obj.time}
+                                value={obj.value}
+                                onPress={() => navigation.navigate('ServiceDetail', obj)} />
+                        ))}
+                    </Content>
+                </Container>
+                <SAFooter {...this.props} />
+            </>
         );
     }
 }

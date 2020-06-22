@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { ScrollView } from 'react-native';
-import { Container, Form, Title } from 'native-base';
+import { Container, Form, Title, DatePicker } from 'native-base';
 import SAInput from '../../general/components/SAInput/SAInput';
 import SAButton from '../../general/components/SAButton/SAButton';
 import SAContent from '../../general/components/SAContent/SAContent';
@@ -9,15 +9,21 @@ export default class Register extends Component {
     constructor(props) {
         super(props);
         this.state = {
-                nome: '',
-                telefone: '',
-                dataNascimento: '',
-                cpf: '',
-                logradouro: '',
-                bairro: '',
-                numero: '',
-                cep: ''
+            nome: '',
+            telefone: '',
+            dataNascimento: '',
+            cpf: '',
+            logradouro: '',
+            bairro: '',
+            numero: '',
+            cep: '',
+            chosenDate: new Date()
         };
+        this.setDate = this.setDate.bind(this);
+    }
+
+    setDate(newDate) {
+        this.setState({ chosenDate: newDate });
     }
 
     handlerInput = (value, field) => {
@@ -25,7 +31,7 @@ export default class Register extends Component {
     }
 
     render() {
-        const {  nome, telefone, dataNascimento, cpf, logradouro, bairro, numero, cep } = this.state;
+        const { nome, telefone, dataNascimento, cpf, logradouro, bairro, numero, cep } = this.state;
 
         return (
             <Container style={{ backgroundColor: '#455A64' }}>
@@ -42,6 +48,23 @@ export default class Register extends Component {
                             <SAInput name='Celular' field='telefone' value={telefone} onChange={(telefone) => this.handlerInput(telefone, 'telefone')} />
                             <SAInput name='Data de nascimento' field='dataNascimento' value={dataNascimento} onChange={(dataNascimento) => this.handlerInput(dataNascimento, 'dataNascimento')} />
                             <SAInput name='CPF' field='cpf' value={cpf} onChange={(cpf) => this.handlerInput(cpf, 'cpf')} />
+
+                            <DatePicker
+                                datePickerBg={'green'}
+                                defaultDate={new Date(2018, 4, 4)}
+                                minimumDate={new Date(2018, 1, 1)}
+                                maximumDate={new Date(2018, 12, 31)}
+                                locale={"pt"}
+                                timeZoneOffsetInMinutes={undefined}
+                                modalTransparent={false}
+                                animationType={"fade"}
+                                androidMode={"default"}
+                                placeHolderText="Data de nascimento"
+                                textStyle={{ color: "black" }}
+                                placeHolderTextStyle={{ color: "#d3d3d3" }}
+                                onDateChange={this.setDate}
+                                disabled={false}
+                            />
 
                             <Title style={{ marginTop: 16, fontSize: 20, color: '#FFC107' }}> Endereço </Title>
                             <SAInput name='Logradouro' field='logradouro' value={logradouro} onChange={(logradouro) => this.handlerInput(logradouro, 'logradouro')} />

@@ -12,7 +12,8 @@ export const style = {
         fontWeight: 'bold'
     },
     textArea: {
-        marginLeft: 4
+        marginLeft: 4,
+        backgroundColor: '#FFFF'
         
     }
 }

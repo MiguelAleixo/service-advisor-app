@@ -8,12 +8,12 @@ export default class SATextArea extends Component {
     }
 
     render() {
-        const {  name } = this.props;
+        const { name, placeholder } = this.props;
 
         return (
             <TextAreaMargin>
                 <Label style={style.label}> { name } </Label>
-                <Textarea style={style.textArea} rowSpan={4} bordered placeholder="Escreva uma breve descrição de seu serviço" />
+                <Textarea style={style.textArea} rowSpan={4} bordered placeholder={placeholder} />
             </TextAreaMargin>
         );
     }

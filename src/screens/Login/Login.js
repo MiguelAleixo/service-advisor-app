@@ -26,8 +26,8 @@ export default class Login extends Component {
                 <SAContent>
                     <Form>
 
-                        <SAInput name='Login' field='user' value={user} onChange={(user) => this.handlerInput(user, 'user')} />
-                        <SAInput name='Senha' password field='password' value={password} onChange={(password) => this.handlerInput(password, 'password')} />
+                        <SAInput color placeholder='ex: john@hotmail.com' name='Login' field='user' value={user} onChange={(user) => this.handlerInput(user, 'user')} />
+                        <SAInput color name='Senha' placeholder='Digite sua senha' password field='password' value={password} onChange={(password) => this.handlerInput(password, 'password')} />
 
                         <SAButton name='Entrar' 
                         onPress={() => console.log(this.state)}/>

@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import MyServices from './MyServices';
 import InfoService from './InfoService';
-import SAFooter from '../../general/components/SAFooter/SAFooter';
+import CallService from './CallService';
 
 const Drawer = createDrawerNavigator();
 
@@ -23,6 +22,10 @@ export default class Routes extends Component {
 
                 <Drawer.Screen
                     name="InfoService" component={InfoService}
+                />
+
+                <Drawer.Screen
+                    name="CallService" component={CallService}
                 />
             </Drawer.Navigator>
         );

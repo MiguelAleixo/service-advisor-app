@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const ButtonMargin = styled.View`
-margin: 12px 0;
+margin: 16px 8px;
 `;
 
 export const style = {

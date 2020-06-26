@@ -77,13 +77,16 @@ export default class InfoService extends Component {
 
         return (
             <Container style={{ backgroundColor: '#F5F5F5' }}>
-                <SAHeader title='Novo serviço' onPress={() => navigation.navigate('MyServices')} />
+                <SAHeader 
+                title='Novo serviço' 
+                onPress={() => navigation.navigate('MyServices')}
+                OnPressIcon={() => console.log('teste')} />
                 <Content style={{ marginHorizontal: 12 }} showsVerticalScrollIndicator={false}>
                     <SAInput name='Nome' field='nome' placeholder='ex: Troca de resistência' value={nome} onChange={(nome) => this.handlerInput(nome, 'nome')} />
                     <SADropDown name='Categoria' items={types}/>
                     <SADropDown name='Valor' items={values}/>
                     <SADropDown name='Tempo' items={time}/>
-                    <SATextArea name='Descrição'/>
+                    <SATextArea name='Descrição' placeholder='Escreva uma breve descrição de seu serviço'/>
                 </Content>
 
                 <Fab

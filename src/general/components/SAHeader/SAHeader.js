@@ -8,7 +8,7 @@ export default class SAHeader extends Component {
     }
 
     render() {
-        const { title, onPress } = this.props;
+        const { title, onPress, OnPressIcon } = this.props;
 
         return (
             <Header style={style.header}>
@@ -22,7 +22,13 @@ export default class SAHeader extends Component {
                 <Body>
                     <Title>{title}</Title>
                 </Body>
-                <Right />
+                <Right>
+                    {OnPressIcon && (
+                        <Button transparent onPress={onPress}>
+                            <Icon name='trash' />
+                        </Button>
+                    )}
+                </Right>
             </Header>
         );
     }

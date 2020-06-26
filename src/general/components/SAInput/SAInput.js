@@ -8,11 +8,11 @@ export default class SAInput extends Component {
     }
 
     render() {
-        const { value, name, disabled, password, placeholder, onChange } = this.props;
+        const { value, name, disabled, password, placeholder, onChange, color } = this.props;
 
         return (
             <InputMargin>
-                <Label style={style.label}>{name}</Label>
+                <Label style={{ ...style.label, color: color ? '#FFF' : '#212121' }}>{name}</Label>
                 <Item regular style={style.noMargin}>
                     <Input
                         value={value}

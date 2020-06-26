@@ -18,7 +18,17 @@ export default class MyServices extends Component {
                     category: 'Doméstico',
                     avaliation: '4.5',
                     time: 1,
-                    provider: 'Zé Roberto'
+                    provider: 'Zé Roberto',
+                    solicitation: [
+                        {
+                            logradouro: 'Rua Felisbino de Lima',
+                            bairro: 'Cidade Nova',
+                            numero: '1277',
+                            cep: '14401-146',
+                            requester: 'Felipe Braga'
+                        },
+                        {}
+                    ]
                 },
                 {
                     name: 'Quebra paredes',
@@ -67,7 +77,7 @@ export default class MyServices extends Component {
                                 avaliation={obj.avaliation}
                                 time={obj.time}
                                 onEdit={() => navigation.navigate('InfoService', { teste: true })}
-                                onRemove={() => console.log('remover')} />
+                                onService={() => navigation.navigate('CallService', { teste: true })} />
                         ))}
                     </Content>
                     <Fab

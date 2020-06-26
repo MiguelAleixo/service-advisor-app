@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { style, Flex } from './Styles';
-import { Card, CardItem, Thumbnail, Text, Button, Icon, Left, Body, Right, Image } from 'native-base';
+import { style } from './Styles';
+import { Card, CardItem, Thumbnail, Text, Button, Icon, Left, Body } from 'native-base';
 
 export default class SAEditCard extends Component {
     constructor(props) {
@@ -40,28 +40,30 @@ export default class SAEditCard extends Component {
 
     render() {
 
-        const { image, name, time, onEdit, onRemove } = this.props;
+        const { image, name, time, onEdit, onRemove, onService } = this.props;
 
         return (
-            <Card style={style.card}>
-                <CardItem style={style.card}>
-                    <Left>
-                        <Thumbnail square source={{ uri: image }} />
-                        <Body style={style.border}>
-                            <Text style={style.text}>{name}</Text>
+            <>
+                <Card style={style.card}>
+                    <CardItem style={style.card}>
+                        <Left>
+                            <Thumbnail square source={{ uri: image }} />
+                            <Body style={style.border}>
+                                <Text style={style.text}>{name}</Text>
 
-                            <Text note style={style.noMargin}> {time}hr </Text>
+                                <Text note style={style.noMargin}> {time}hr </Text>
 
-                        </Body>
-                    </Left>
-                    <Button transparent onPress={onEdit}>
-                        <Icon style={style.icon} name='create' />
-                    </Button>
-                    <Button transparent onPress={onRemove}>
-                        <Icon style={style.icon} name='trash' />
-                    </Button>
-                </CardItem>
-            </Card>
+                            </Body>
+                        </Left>
+                        <Button transparent onPress={onEdit}>
+                            <Icon style={style.icon} name='create' />
+                        </Button>
+                        <Button style={{ backgroundColor: '#FFC107' }} onPress={onService}>
+                            <Icon style={style.icon} name='hammer' />
+                        </Button>
+                    </CardItem>
+                </Card>
+            </>
         );
     }
 }

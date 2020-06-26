@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Image } from 'react-native';
-import { Card, CardItem, Button, Icon, Text, Left, Body, Right } from 'native-base';
+import { Card, CardItem, Text, Body } from 'native-base';
 import { style, Text as SAText } from './Styles';
 import SAAvaliation from '../SAAvaliation/SAAvaliation';
 

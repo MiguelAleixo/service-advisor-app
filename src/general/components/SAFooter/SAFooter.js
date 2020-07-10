@@ -14,14 +14,15 @@ export default class SAFooter extends Component {
                     type: 'AntDesign'
                 },
                 {
-                    icon: 'hammer',
+                    icon: 'handshake',
                     title: 'Meus Serviços',
                     route: 'MyServices',
-                    type: 'Ionicons'
+                    type:'FontAwesome5'
                 },
                 {
                     icon: 'user',
                     title: 'Perfil',
+                    route: 'Profile',
                     type: 'AntDesign'
                 }
             ]

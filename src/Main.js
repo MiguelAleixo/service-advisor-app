@@ -3,9 +3,9 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 
-// import Services from './screens/Services/Services';
 import MyServicesRoutes  from './screens/MyServices/Routes';
 import ServicesRoutes from './screens/Services/Routes';
+import Profile from './screens/Profile/Profile';
 import Login from './screens/Login/Login';
 import Register from './screens/Register/Register';
 
@@ -19,6 +19,7 @@ export default function Main() {
                 <Drawer.Navigator>
                     <Drawer.Screen name="Services" component={ServicesRoutes} />
                     <Drawer.Screen name="MyServices" component={MyServicesRoutes} />
+                    <Drawer.Screen name="Profile" component={Profile} />
                 </Drawer.Navigator>
             </NavigationContainer>
 

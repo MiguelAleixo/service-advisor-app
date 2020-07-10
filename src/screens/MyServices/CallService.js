@@ -3,26 +3,17 @@ import { Container, Content, Fab, Icon } from 'native-base';
 import SACardSolicitation from '../../general/components/SACardSolicitation/SACardSolicitation';
 import SAHeader from '../../general/components/SAHeader/SAHeader';
 import SATextArea from '../../general/components/SATextArea/SATextArea';
+import SAButton from '../../general/components/SAButton/SAButton';
 
 
 export default class CallService extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            search: '',
-            solicitation: {
-                logradouro: 'Rua Felisbino de Lima',
-                bairro: 'Cidade Nova',
-                numero: '1277',
-                cep: '14401-146',
-                requester: 'Felipe Braga'
-            }
-        }
     }
 
     render() {
-        const { navigation } = this.props;
-        const { solicitation } = this.state;
+        const { navigation, route: { params } } = this.props;
+        const solicitation = params;
 
         return (
             <Container style={{ backgroundColor: '#F5F5F5' }}>
@@ -36,8 +27,10 @@ export default class CallService extends Component {
                         bairro={solicitation.bairro}
                         cep={solicitation.cep}
                         requester={solicitation.requester} />
-                        <SATextArea name='Responder' placeholder='ex: Estou ai em 5 minutos...'/>
+                        <SATextArea name='Responder mensagem (opcional)' placeholder='ex: Estou ai em 5 minutos...'/>
                 </Content>
+                <SAButton name='Iniciar serviço'
+                    onPress={() => console.log(this.state)} />
             </Container>
         );
     }

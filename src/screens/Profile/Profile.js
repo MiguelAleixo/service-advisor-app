@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { Container, Content, Text, Header, Item, Icon, Input, Button } from 'native-base';
+import SAHeader from '../../general/components/SAHeader/SAHeader';
 import SAFooter from '../../general/components/SAFooter/SAFooter';
-import SACard from '../../general/components/SACard/SACard';
-import { Flex, style } from './Styles';
-import SAFilter from '../../general/components/SAFilter/SAFilter';
+import SACardProfile from '../../general/components/SACardProfile/SACardProfile';
+import SACardService from '../../general/components/SACardService/SACardService';
+import SATitle from '../../general/components/SATitle/SATitle';
+import SADropDown from '../../general/components/SADropDown/SADropDown';
 
-export default class Services extends Component {
+export default class Profile extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -155,31 +157,12 @@ export default class Services extends Component {
         return (
             <>
                 <Container style={{ backgroundColor: '#F5F5F5' }}>
-                    <Header searchBar rounded style={{ backgroundColor: '#263238' }}>
-                        <Item>
-                            <Icon name="search" />
-                            <Input placeholder="Pesquisar serviço" />
-                            <Icon name="hammer" />
-                        </Item>
-                        <Button transparent>
-                            <Text>Pesquisar serviço</Text>
-                        </Button>
-                    </Header>
-                    <Flex>
-                        <SAFilter name='Categoria' items={types} />
-                        <SAFilter name='Avaliação' items={avaliations} />
-                    </Flex>
+                <SAHeader title='Meu Perfil' />
                     <Content style={{ marginHorizontal: 10 }} showsVerticalScrollIndicator={false}>
-                        {services.map(obj => (
-                            <SACard
-                                name={obj.name}
-                                image={obj.image}
-                                avaliation={obj.avaliation}
-                                provider={obj.provider}
-                                time={obj.time}
-                                value={obj.value}
-                                onPress={() => navigation.navigate('ServiceDetail', obj)} />
-                        ))}
+                    <SATitle title='Olá Miguel'/>
+                    <SATitle title='Editar perfil'/>
+                    <SADropDown items={types}/>
+                    <SACardService />
                     </Content>
                 </Container>
                 <SAFooter {...this.props} />

@@ -3,6 +3,7 @@ import { Container, Content } from 'native-base';
 import SACardImage from '../../general/components/SACardImage/SACardImage';
 import SAHeader from '../../general/components/SAHeader/SAHeader';
 import SAButton from '../../general/components/SAButton/SAButton';
+import SATextArea from '../../general/components/SATextArea/SATextArea';
 
 export default class ServicesDetail extends Component {
     constructor(props) {
@@ -18,9 +19,6 @@ export default class ServicesDetail extends Component {
     render() {
         const { navigation, route } = this.props;
         const obj = route.params;
-        const { services, search } = this.state;
-
-        console.log('props', obj);
 
         return (
             <Container style={{ backgroundColor: '#F5F5F5' }}>
@@ -34,7 +32,9 @@ export default class ServicesDetail extends Component {
                         avaliation={obj.avaliation}
                         provider={obj.provider}
                         time={obj.time}
+                        description={obj.description}
                         value={obj.value} />
+                        <SATextArea name='Mensagem (opcional)' placeholder='ex: O modelo do chuveiro é...'/>
                 </Content>
                 <SAButton name='Quero esse serviço!'
                     onPress={() => console.log(this.state)} />

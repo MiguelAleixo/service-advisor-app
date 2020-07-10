@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { DropDownMargin, style } from './Styles';
+import { FilterMargin, style } from './Styles';
 import { Picker, Label } from 'native-base';
 
-export default class SADropDown extends Component {
+export default class SAFilter extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -20,13 +20,11 @@ export default class SADropDown extends Component {
         const { items, name } = this.props;
 
         return (
-            <DropDownMargin>
-                {name && (
-                    <Label style={style.label}>{name}</Label>
-                )}
+            <FilterMargin>
+                <Label style={style.label}>{name}: </Label>
                 <Picker
                     mode="dropdown"
-                    // style={{ backgroundColor: '#FFFF' }}
+                    style={style.filter}
                     selectedValue={this.state.selected}
                     onValueChange={this.onValueChange.bind(this)}
                 >
@@ -36,7 +34,7 @@ export default class SADropDown extends Component {
                         ))
                     }
                 </Picker>
-            </ DropDownMargin>
+            </ FilterMargin>
         );
     }
 }

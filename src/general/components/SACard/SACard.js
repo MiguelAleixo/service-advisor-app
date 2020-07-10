@@ -10,7 +10,7 @@ export default class SACard extends Component {
     }
 
     render() {
-        const { image, name, provider, avaliation, time, onPress } = this.props;
+        const { image, name, provider, avaliation, time, value, onPress } = this.props;
         return (
             <TouchableOpacity activeOpacity={0.8} onPress={onPress}>
                 <Card style={style.card}>
@@ -21,10 +21,10 @@ export default class SACard extends Component {
                                 <Text style={style.text}>{name}</Text>
 
                                 <Flex>
-                                    <Text note style={style.noMargin}>{provider}</Text>
-                                    <Text note style={style.dot, style.noMargin}>•</Text>
-                                    <Text note style={style.noMargin}> {time}hr </Text>
+                                <Text note style={style.noMargin}> {provider} </Text>
+                                    {/* <Text note style={style.dot, style.noMargin}>•</Text> */}
                                 </Flex>
+                                <Text note style={style.noMargin}> {value} </Text>
                             </Body>
                             <SAAvaliation avaliation={avaliation} />
                         </Left>

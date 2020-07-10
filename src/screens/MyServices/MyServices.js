@@ -19,16 +19,14 @@ export default class MyServices extends Component {
                     avaliation: '4.5',
                     time: 1,
                     provider: 'Zé Roberto',
-                    solicitation: [
+                    solicitation:
                         {
                             logradouro: 'Rua Felisbino de Lima',
                             bairro: 'Cidade Nova',
                             numero: '1277',
                             cep: '14401-146',
                             requester: 'Felipe Braga'
-                        },
-                        {}
-                    ]
+                        }
                 },
                 {
                     name: 'Quebra paredes',
@@ -37,7 +35,15 @@ export default class MyServices extends Component {
                     category: '',
                     avaliation: '3.9',
                     time: 5,
-                    provider: 'Miguel Aleixo'
+                    provider: 'Miguel Aleixo',
+                    solicitation:
+                        {
+                            logradouro: 'Rua Felisbino de Lima',
+                            bairro: 'Cidade Nova',
+                            numero: '1277',
+                            cep: '14401-146',
+                            requester: 'Julio Cesar'
+                        }
                 },
                 {
                     name: 'Pintura de parede',
@@ -47,16 +53,7 @@ export default class MyServices extends Component {
                     avaliation: '4.9',
                     time: 8,
                     provider: 'Miguel Aleixo'
-                },
-                {
-                    name: 'Quebra paredes',
-                    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSZEFwJrp0VJvmfgObLhI5elxXoTKLPQ-uc15mo-y3p4lrBEbKd&usqp=CAU',
-                    description: 'Obras',
-                    category: '',
-                    avaliation: '3.9',
-                    time: 5,
-                    provider: 'Miguel Aleixo'
-                },
+                }
             ]
         }
     }
@@ -76,8 +73,9 @@ export default class MyServices extends Component {
                                 name={obj.name}
                                 avaliation={obj.avaliation}
                                 time={obj.time}
+                                solicitation={obj.solicitation}
                                 onEdit={() => navigation.navigate('InfoService', { teste: true })}
-                                onService={() => navigation.navigate('CallService', { teste: true })} />
+                                onService={() => navigation.navigate('CallService', obj.solicitation)} />
                         ))}
                     </Content>
                     <Fab

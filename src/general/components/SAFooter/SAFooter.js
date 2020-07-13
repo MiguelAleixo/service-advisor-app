@@ -32,7 +32,6 @@ export default class SAFooter extends Component {
     render() {
         const { route, navigation } = this.props;
         const { buttons } = this.state;
-        console.log('rota', route)
 
         return (
             <Footer>

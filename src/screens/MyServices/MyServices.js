@@ -3,9 +3,11 @@ import { Container, Content, Fab, Icon } from 'native-base';
 import SAEditCard from '../../general/components/SAEditCard/SAEditCard';
 import SAHeader from '../../general/components/SAHeader/SAHeader';
 import SAFooter from '../../general/components/SAFooter/SAFooter';
+import * as actions from './controller/actions'
+import { connect } from 'react-redux'
 
 
-export default class MyServices extends Component {
+class MyServices extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -20,13 +22,13 @@ export default class MyServices extends Component {
                     time: 1,
                     provider: 'Zé Roberto',
                     solicitation:
-                        {
-                            logradouro: 'Rua Felisbino de Lima',
-                            bairro: 'Cidade Nova',
-                            numero: '1277',
-                            cep: '14401-146',
-                            requester: 'Felipe Braga'
-                        }
+                    {
+                        logradouro: 'Rua Felisbino de Lima',
+                        bairro: 'Cidade Nova',
+                        numero: '1277',
+                        cep: '14401-146',
+                        requester: 'Felipe Braga'
+                    }
                 },
                 {
                     name: 'Quebra paredes',
@@ -37,13 +39,13 @@ export default class MyServices extends Component {
                     time: 5,
                     provider: 'Miguel Aleixo',
                     solicitation:
-                        {
-                            logradouro: 'Rua Felisbino de Lima',
-                            bairro: 'Cidade Nova',
-                            numero: '1277',
-                            cep: '14401-146',
-                            requester: 'Julio Cesar'
-                        }
+                    {
+                        logradouro: 'Rua Felisbino de Lima',
+                        bairro: 'Cidade Nova',
+                        numero: '1277',
+                        cep: '14401-146',
+                        requester: 'Julio Cesar'
+                    }
                 },
                 {
                     name: 'Pintura de parede',
@@ -58,16 +60,28 @@ export default class MyServices extends Component {
         }
     }
 
+    componentDidMount = () => {
+        this.getMyServices()
+    }
+
+    getMyServices = () => {
+        const { login: { content: { id_user } } } = this.props
+        const { getMyServices } = this.props
+        console.log('chegou aqui')
+        getMyServices(id_user)
+    }
+
     render() {
-        const { navigation } = this.props;
+        const { navigation, myServices } = this.props;
         const { services } = this.state;
+        console.log('MYT', myServices)
 
         return (
             <>
                 <Container style={{ backgroundColor: '#F5F5F5' }}>
                     <SAHeader title='Meus Serviços' />
                     <Content style={{ marginHorizontal: 10 }} showsVerticalScrollIndicator={false}>
-                        {services.map(obj => (
+                        {myServices.content && myServices.content.map(obj => (
                             <SAEditCard
                                 image={obj.image}
                                 name={obj.name}
@@ -90,3 +104,7 @@ export default class MyServices extends Component {
         );
     }
 }
+
+const mapStateToProps = ({ myServices, login }) => ({ myServices, login })
+
+export default connect(mapStateToProps, { getMyServices: actions.getMyServices })(MyServices)

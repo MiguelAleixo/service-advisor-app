@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { Container, Content, Text, Header, Item, Icon, Input, Button } from 'native-base';
+import { Flex, style } from './Styles';
 import SAFooter from '../../general/components/SAFooter/SAFooter';
 import SACard from '../../general/components/SACard/SACard';
-import { Flex, style } from './Styles';
 import SAFilter from '../../general/components/SAFilter/SAFilter';
+import * as actions from './controller/actions'
+import { connect } from 'react-redux'
 
-export default class Services extends Component {
+class Services extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -144,13 +146,25 @@ export default class Services extends Component {
         }
     }
 
-    componentDidMount() {
+    componentDidMount = () => {
+        this.getServices()
     }
 
+    componentWillUnmount = () => {
+        this.getServices()
+        console.log('TA FUFNFANO NAO')
+    }
+
+    getServices = () => {
+        const { login: { content: { id_user } } } = this.props
+        const { getServices } = this.props
+        getServices(id_user)
+    }
+
+
     render() {
-        const { navigation } = this.props;
-        const { services, search, types, avaliations } = this.state;
-        const uri = "https://images3.alphacoders.com/823/thumb-1920-82317.jpg";
+        const { navigation, services } = this.props;
+        const { search, types, avaliations } = this.state;
 
         return (
             <>
@@ -170,7 +184,7 @@ export default class Services extends Component {
                         <SAFilter name='Avaliação' items={avaliations} />
                     </Flex>
                     <Content style={{ marginHorizontal: 10 }} showsVerticalScrollIndicator={false}>
-                        {services.map(obj => (
+                        {services.content && services.content.map(obj => (
                             <SACard
                                 name={obj.name}
                                 image={obj.image}
@@ -187,3 +201,7 @@ export default class Services extends Component {
         );
     }
 }
+
+const mapStateToProps = ({ services, login }) => ({ services, login })
+
+export default connect(mapStateToProps, { getServices: actions.getServices })(Services)

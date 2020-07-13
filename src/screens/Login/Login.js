@@ -3,22 +3,35 @@ import { Container, Content, Form } from 'native-base';
 import SAInput from '../../general/components/SAInput/SAInput';
 import SAButton from '../../general/components/SAButton/SAButton';
 import SAContent from '../../general/components/SAContent/SAContent';
+import * as actions from './controller/actions'
+import { connect } from 'react-redux'
 
-export default class Login extends Component {
+class Login extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            user: '',
+            login: '',
             password: ''
         };
     }
 
     handlerInput = (value, field) => {
-        this.setState({ [field]: value }, () => console.log(this.state))
+        this.setState({ [field]: value })
+    }
+
+    authUser = () => {
+        const {
+            authUser
+        } = this.props
+        const {
+            login,
+            password
+        } = this.state
+        authUser(login, password)
     }
 
     render() {
-        const { user, password } = this.state;
+        const { login, password } = this.state;
         const { navigation } = this.props;
 
         return (
@@ -26,19 +39,23 @@ export default class Login extends Component {
                 <SAContent>
                     <Form>
 
-                        <SAInput color placeholder='ex: john@hotmail.com' name='Login' field='user' value={user} onChange={(user) => this.handlerInput(user, 'user')} />
+                        <SAInput color placeholder='ex: john@hotmail.com' name='Login' field='user' value={login} onChange={(login) => this.handlerInput(login, 'login')} />
                         <SAInput color name='Senha' placeholder='Digite sua senha' password field='password' value={password} onChange={(password) => this.handlerInput(password, 'password')} />
 
-                        <SAButton name='Entrar' 
-                        onPress={() => console.log(this.state)}/>
+                        <SAButton name='Entrar'
+                            onPress={() => this.authUser()} />
 
-                        <SAButton name='Cadastre-se' 
-                        small accent transparent
-                        onPress={() => navigation.navigate('Register')}/>
-                        
+                        <SAButton name='Cadastre-se'
+                            small accent transparent
+                            onPress={() => navigation.navigate('Register')} />
+
                     </Form>
                 </SAContent>
             </Container>
         );
     }
 }
+
+const mapStateToProps = ({ login }) => ({ login })
+
+export default connect(mapStateToProps, { authUser: actions.authUser })(Login)

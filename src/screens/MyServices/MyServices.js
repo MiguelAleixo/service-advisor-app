@@ -83,7 +83,7 @@ class MyServices extends Component {
                     <Content style={{ marginHorizontal: 10 }} showsVerticalScrollIndicator={false}>
                         {myServices.content && myServices.content.map(obj => (
                             <SAEditCard
-                                image={obj.image}
+                                image={obj.img}
                                 name={obj.name}
                                 avaliation={obj.avaliation}
                                 time={obj.time}
@@ -99,7 +99,7 @@ class MyServices extends Component {
                         <Icon name="add" style={{ color: '#263238' }} />
                     </Fab>
                 </Container>
-                <SAFooter {...this.props} />
+                <SAFooter onChange={ () => this.getMyServices()} {...this.props} />
             </>
         );
     }

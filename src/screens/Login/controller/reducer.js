@@ -7,8 +7,7 @@ import {
 export const INITIAL_STATE = {
         isRequesting: false,
         success: false,
-        error: false,
-        content: { id_user: 1 }
+        error: false
 }
 
 export default function login(state = INITIAL_STATE, action) {
@@ -21,8 +20,8 @@ export default function login(state = INITIAL_STATE, action) {
         case LOGIN_SUCCESS:
             return {
                 ...state,
+                ...action.payload,
                 isResquesting: false,
-                content: action.payload,
                 error: false
             }
         case LOGIN_FAILURE:

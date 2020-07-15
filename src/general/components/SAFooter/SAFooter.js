@@ -30,7 +30,7 @@ export default class SAFooter extends Component {
     }
 
     render() {
-        const { route, navigation } = this.props;
+        const { route, navigation, onChange } = this.props;
         const { buttons } = this.state;
 
         return (
@@ -40,7 +40,7 @@ export default class SAFooter extends Component {
                         buttons.map(obj => (
                             <Button
                                 style={(route.name !== obj.route) ? style.button : style.buttonActive}
-                                onPress={() => navigation.navigate(obj.route)} vertical>
+                                onPress={() => { navigation.navigate(obj.route); onChange() }} vertical>
                                 <Icon
                                     type={obj.type}
                                     style={(route.name !== obj.route) ? style.icon : style.iconActive} name={obj.icon} />

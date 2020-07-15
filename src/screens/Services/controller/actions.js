@@ -5,11 +5,11 @@ import {
 } from './constants'
 import api from '../../../services/api'
 
-export function getServices(idUser) {
+export function getServices(idUser, idCategory) {
     return dispach => {
         dispach({ type: SERVICES_REQUESTING })
         return api
-            .get(`/services/${idUser}`)
+            .get(`/services/${idUser}/${idCategory}`)
             .then(res => {
                 dispach({
                     type: SERVICES_SUCCESS,

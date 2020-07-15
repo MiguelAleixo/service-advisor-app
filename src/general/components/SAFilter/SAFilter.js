@@ -10,14 +10,8 @@ export default class SAFilter extends Component {
         }
     }
 
-    onValueChange(value) {
-        this.setState({
-            selected: value
-        });
-    }
-
     render() {
-        const { items, name } = this.props;
+        const { items, name, selected } = this.props;
 
         return (
             <FilterMargin>
@@ -26,7 +20,13 @@ export default class SAFilter extends Component {
                     mode="dropdown"
                     style={style.filter}
                     selectedValue={this.state.selected}
-                    onValueChange={this.onValueChange.bind(this)}
+                    onValueChange={(value) =>
+                        this.setState({
+                            selected: value
+                        }, () => {
+                            selected(this.state.selected)
+                        })
+                    }
                 >
                     {
                         items.map(obj => (

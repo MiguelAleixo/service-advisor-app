@@ -15,7 +15,7 @@ const Drawer = createDrawerNavigator();
 function Main(props) {
     console.log('id do usuário', props.login)
     return (
-        true ? (
+        props.login.id_user ? (
             <NavigationContainer>
                 <Drawer.Navigator>
                     <Drawer.Screen name="Services" component={ServicesRoutes} />

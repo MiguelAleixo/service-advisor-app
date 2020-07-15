@@ -24,3 +24,23 @@ export function getMyServices(idUser) {
             })
     }
 }
+
+export function createMyService(idUser, data) {
+    return dispach => {
+        dispach({ type: MY_SERVICES_REQUESTING })
+        return api
+            .post(`/my-services/${idUser}`, data)
+            .then(res => {
+                dispach({
+                    type: MY_SERVICES_SUCCESS,
+                    payload: res.data
+                })
+            })
+            .catch(err => {
+                dispach({
+                    type: MY_SERVICES_FAILURE,
+                    payload: err
+                })
+            })
+    }
+}

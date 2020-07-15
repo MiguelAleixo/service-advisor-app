@@ -28,16 +28,16 @@ export default class ServicesDetail extends Component {
                 <Content style={{ marginHorizontal: 10 }} showsVerticalScrollIndicator={false}>
                     <SACardImage
                         name={obj.name}
-                        image={obj.image}
+                        image={obj.img}
                         avaliation={obj.avaliation}
                         provider={obj.provider}
                         time={obj.time}
                         description={obj.description}
                         value={obj.value} />
                         <SATextArea name='Mensagem (opcional)' placeholder='ex: O modelo do chuveiro é...'/>
-                </Content>
-                <SAButton name='Quero esse serviço!'
+                        <SAButton name='Quero esse serviço!'
                     onPress={() => console.log(this.state)} />
+                </Content>
             </Container>
         );
     }

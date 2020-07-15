@@ -10,14 +10,8 @@ export default class SADropDown extends Component {
         }
     }
 
-    onValueChange(value) {
-        this.setState({
-            selected: value
-        });
-    }
-
     render() {
-        const { items, name } = this.props;
+        const { items, name, selected } = this.props;
 
         return (
             <DropDownMargin>
@@ -26,9 +20,13 @@ export default class SADropDown extends Component {
                 )}
                 <Picker
                     mode="dropdown"
-                    // style={{ backgroundColor: '#FFFF' }}
                     selectedValue={this.state.selected}
-                    onValueChange={this.onValueChange.bind(this)}
+                    onValueChange={(value) =>
+                        this.setState({
+                            selected: value
+                        }, () => {
+                            selected(this.state.selected)
+                        })}
                 >
                     {
                         items.map(obj => (

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { NavigationContainer } from '@react-navigation/native';
-import { createDrawerNavigator } from '@react-navigation/drawer';
+import { createStackNavigator } from '@react-navigation/stack';
 
 import MyServicesRoutes from './screens/MyServices/Routes';
 import ServicesRoutes from './screens/Services/Routes';
@@ -10,26 +10,55 @@ import Login from './screens/Login/Login';
 import Register from './screens/Register/Register';
 import { connect } from 'react-redux'
 
-const Drawer = createDrawerNavigator();
+// const Drawer = createDrawerNavigator();
+const Stack = createStackNavigator();
 
 function Main(props) {
     console.log('id do usuário', props.login)
     return (
-        props.login.id_user ? (
+        props.login.idUser ? (
             <NavigationContainer>
-                <Drawer.Navigator>
-                    <Drawer.Screen name="Services" component={ServicesRoutes} />
-                    <Drawer.Screen name="MyServices" component={MyServicesRoutes} />
-                    <Drawer.Screen name="Profile" component={Profile} />
-                </Drawer.Navigator>
+                <Stack.Navigator
+                    screenOptions={{
+                        headerShown: false
+                    }}
+                >
+                    <Stack.Screen
+                        options={{
+                            animationEnabled: false,
+                        }}
+                        name="Services" component={ServicesRoutes} />
+                    <Stack.Screen
+                        options={{
+                            animationEnabled: false,
+                        }}
+                        name="MyServices" component={MyServicesRoutes} />
+                    <Stack.Screen
+                        options={{
+                            animationEnabled: false,
+                        }}
+                        name="Profile" component={Profile} />
+                </Stack.Navigator>
             </NavigationContainer>
 
         ) : (
                 <NavigationContainer>
-                    <Drawer.Navigator>
-                        <Drawer.Screen name="Login" component={Login} />
-                        <Drawer.Screen name="Register" component={Register} />
-                    </Drawer.Navigator>
+                    <Stack.Navigator
+                        screenOptions={{
+                            headerShown: false
+                        }}
+                    >
+                        <Stack.Screen
+                            options={{
+                                animationEnabled: false,
+                            }}
+                            name="Login" component={Login} />
+                        <Stack.Screen
+                            options={{
+                                animationEnabled: false,
+                            }}
+                            name="Register" component={Register} />
+                    </Stack.Navigator>
                 </NavigationContainer>
             )
     );

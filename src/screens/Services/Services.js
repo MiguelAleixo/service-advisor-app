@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Content, Text, Header, Item, Icon, Input, Button } from 'native-base';
+import { Container, Content, Text, Header, Item, Icon, Input, Button, Spinner } from 'native-base';
 import { Flex } from './Styles';
 import SAFooter from '../../general/components/SAFooter/SAFooter';
 import SACard from '../../general/components/SACard/SACard';
@@ -11,7 +11,6 @@ class Services extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            search: '',
             types: [
                 {
                     id: 0,
@@ -33,16 +32,6 @@ class Services extends Component {
                     id: 4,
                     name: 'Doméstico'
                 }
-            ],
-            avaliations: [
-                {
-                    id: 1,
-                    name: 'Bem avaliados'
-                },
-                {
-                    id: 2,
-                    name: 'Mal avaliados'
-                }
             ]
         }
     }
@@ -52,14 +41,14 @@ class Services extends Component {
     }
 
     getServices = (idCategory = 0) => {
-        const { login: { content: { id_user } } } = this.props
+        const { login: { idUser } } = this.props
         const { getServices } = this.props
-        getServices(id_user, idCategory)
+        getServices(idUser, idCategory)
     }
 
     render() {
         const { navigation, services } = this.props;
-        const { search, types, avaliations } = this.state;
+        const { types } = this.state;
 
         return (
             <>
@@ -68,18 +57,19 @@ class Services extends Component {
                         <Item>
                             <Icon name="search" />
                             <Input placeholder="Pesquisar serviço" />
-                            <Icon name="hammer" />
                         </Item>
                         <Button transparent>
                             <Text>Pesquisar serviço</Text>
                         </Button>
                     </Header>
                     <Flex>
-                        <SAFilter selected={ (idCategory) => this.getServices(idCategory)} name='Categoria' items={types} />
-                        <SAFilter name='Avaliação' items={avaliations} />
+                        <SAFilter selected={(idCategory) => this.getServices(idCategory)} name='Categoria' items={types} />
                     </Flex>
                     <Content style={{ marginHorizontal: 10 }} showsVerticalScrollIndicator={false}>
-                            {services.content && services.content.map(obj => (
+
+                        {services.isRequesting ?
+                            <Spinner color='#FFC107' /> :
+                            (services.content && services.content.map(obj => (
                                 <SACard
                                     name={obj.name}
                                     image={obj.img}
@@ -88,10 +78,10 @@ class Services extends Component {
                                     time={obj.time}
                                     value={obj.value}
                                     onPress={() => navigation.navigate('ServiceDetail', obj)} />
-                            ))}
+                            )))}
                     </Content>
                 </Container>
-                <SAFooter onChange={ () => this.getServices()} {...this.props} />
+                <SAFooter onChange={() => this.getServices()} {...this.props} />
             </>
         );
     }

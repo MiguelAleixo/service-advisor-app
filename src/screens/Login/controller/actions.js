@@ -8,6 +8,7 @@ import api from '../../../services/api'
 export function authUser(login, password) {
     return dispach => {
         dispach({ type: LOGIN_REQUESTING })
+        console.log('oi')
         return api
             .post(`/user`,
                 {

@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { createDrawerNavigator } from '@react-navigation/drawer';
+import { createStackNavigator } from '@react-navigation/stack';
 import MyServices from './MyServices';
 import InfoService from './InfoService';
 import CallService from './CallService';
 
-const Drawer = createDrawerNavigator();
+const Stack = createStackNavigator();
 
 export default class Routes extends Component {
     constructor(props) {
@@ -15,19 +15,23 @@ export default class Routes extends Component {
         const { navigation } = this.props;
 
         return (
-            <Drawer.Navigator>
-                <Drawer.Screen
+            <Stack.Navigator
+                screenOptions={{
+                    headerShown: false
+                }}
+            >
+                <Stack.Screen
                     name="MyServices" component={MyServices}
                 />
 
-                <Drawer.Screen
+                <Stack.Screen
                     name="InfoService" component={InfoService}
                 />
 
-                <Drawer.Screen
+                <Stack.Screen
                     name="CallService" component={CallService}
                 />
-            </Drawer.Navigator>
+            </Stack.Navigator>
         );
     }
 }

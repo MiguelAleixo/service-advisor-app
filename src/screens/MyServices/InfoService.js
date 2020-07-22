@@ -84,9 +84,9 @@ class InfoService extends Component {
     }
 
     createMyService = (data, navigation) => {
-        const { login: { content: { id_user } } } = this.props
+        const { login: { idUser } } = this.props
         const { createMyService } = this.props
-        createMyService(id_user, data)
+        createMyService(idUser, data)
         navigation.navigate('MyServices')
     }
 

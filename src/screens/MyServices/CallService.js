@@ -2,18 +2,25 @@ import React, { Component } from 'react';
 import { Container, Content, Fab, Icon } from 'native-base';
 import SACardSolicitation from '../../general/components/SACardSolicitation/SACardSolicitation';
 import SAHeader from '../../general/components/SAHeader/SAHeader';
-import SATextArea from '../../general/components/SATextArea/SATextArea';
 import SAButton from '../../general/components/SAButton/SAButton';
+import * as actions from './controller/actions'
+import { connect } from 'react-redux'
 
 
-export default class CallService extends Component {
+class CallService extends Component {
     constructor(props) {
         super(props);
+    }
+
+    acceptSolicitation = (idSolicitation, data) => {
+        const { acceptSolicitation } = this.props;
+        acceptSolicitation(idSolicitation, data)
     }
 
     render() {
         const { navigation, route: { params } } = this.props;
         const solicitation = params;
+        console.log('teste', this.props)
 
         return (
             <Container style={{ backgroundColor: '#F5F5F5' }}>
@@ -26,12 +33,17 @@ export default class CallService extends Component {
                         numero={solicitation.numero}
                         bairro={solicitation.bairro}
                         cep={solicitation.cep}
-                        requester={solicitation.requester} />
-                        <SATextArea name='Responder mensagem (opcional)' placeholder='ex: Estou ai em 5 minutos...'/>
+                        requester={solicitation.requester}
+                        message={solicitation.message} />
                 </Content>
-                <SAButton name='Iniciar serviço'
-                    onPress={() => console.log(this.state)} />
+                <SAButton name='Aceitar serviço'
+                    onPress={() => {
+                        this.acceptSolicitation(solicitation.idSolicitation, { idStatus: 2 });
+                        navigation.navigate('MyServices')
+                    }} />
             </Container>
         );
     }
 }
+
+export default connect(null, { acceptSolicitation: actions.acceptSolicitation })(CallService)

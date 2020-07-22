@@ -21,7 +21,7 @@ export default function myServices(state = INITIAL_STATE, action) {
         case MY_SERVICES_SUCCESS:
             return {
                 ...state,
-                isResquesting: false,
+                isRequesting: false,
                 content: action.payload,
                 error: false
             }

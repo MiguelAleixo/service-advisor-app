@@ -6,7 +6,3 @@ export const Flex = styled.View`
     margin: 0 12px;
     justify-content: space-around;
 `;
-
-export const style = {
-    
-}

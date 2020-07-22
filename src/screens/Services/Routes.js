@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
-import { Text } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createDrawerNavigator } from '@react-navigation/drawer';
+import { createStackNavigator } from '@react-navigation/stack';
 import Services from './Services';
 import ServiceDetail from './ServiceDetail';
-import SAFooter from '../../general/components/SAFooter/SAFooter';
 
-const Drawer = createDrawerNavigator();
+const Stack = createStackNavigator();
 
 export default class Routes extends Component {
     constructor(props) {
@@ -19,15 +16,19 @@ export default class Routes extends Component {
 
     render() {
         return (
-                <Drawer.Navigator>
-                    <Drawer.Screen
-                        name="Services" component={Services}
-                    />
+            <Stack.Navigator
+                screenOptions={{
+                    headerShown: false
+                }}
+            >
+                <Stack.Screen
+                    name="Services" component={Services}
+                />
 
-                    <Drawer.Screen
-                        name="ServiceDetail" component={ServiceDetail}
-                    />
-                </Drawer.Navigator>
+                <Stack.Screen
+                    name="ServiceDetail" component={ServiceDetail}
+                />
+            </Stack.Navigator>
         );
     }
 }

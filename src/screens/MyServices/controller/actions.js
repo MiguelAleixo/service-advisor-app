@@ -44,3 +44,23 @@ export function createMyService(idUser, data) {
             })
     }
 }
+
+export function acceptSolicitation(idSolicitation, data) {
+    return dispach => {
+        dispach({ type: MY_SERVICES_REQUESTING })
+        return api
+            .put(`/my-services/solicitation/${idSolicitation}`, data)
+            .then(res => {
+                dispach({
+                    type: MY_SERVICES_SUCCESS,
+                    payload: res.data
+                })
+            })
+            .catch(err => {
+                dispach({
+                    type: MY_SERVICES_FAILURE,
+                    payload: err
+                })
+            })
+    }
+}

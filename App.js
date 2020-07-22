@@ -8,13 +8,15 @@ import thunk from 'redux-thunk';
 import login from './src/screens/Login/controller/reducer'
 import myServices from './src/screens/MyServices/controller/reducer'
 import services from './src/screens/Services/controller/reducer'
+import mySolicitation from './src/screens/Profile/controller/reducer'
 
 
 const store = createStore(
   combineReducers({
     login,
     myServices,
-    services
+    services,
+    mySolicitation
   }),
   applyMiddleware(logger, thunk)
 )

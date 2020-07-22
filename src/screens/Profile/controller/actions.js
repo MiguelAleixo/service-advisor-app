@@ -1,45 +1,44 @@
 import {
-    SERVICES_REQUESTING,
-    SERVICES_SUCCESS,
-    SERVICES_FAILURE
+    MY_SOLICITATION_REQUESTING,
+    MY_SOLICITATION_SUCCESS,
+    MY_SOLICITATION_FAILURE
 } from './constants'
 import api from '../../../services/api'
 
-export function getServices(idUser, idCategory) {
-    console.log('susususu', idUser)
+export function getMySolicitation(idUser) {
     return dispach => {
-        dispach({ type: SERVICES_REQUESTING })
+        dispach({ type: MY_SOLICITATION_REQUESTING })
         return api
-            .get(`/services/${idUser}/${idCategory}`)
+            .get(`/services/solicitation/${idUser}`)
             .then(res => {
                 dispach({
-                    type: SERVICES_SUCCESS,
+                    type: MY_SOLICITATION_SUCCESS,
                     payload: res.data
                 })
             })
             .catch(err => {
                 dispach({
-                    type: SERVICES_FAILURE,
+                    type: MY_SOLICITATION_FAILURE,
                     payload: err
                 })
             })
     }
 }
 
-export function registerSolicitation(idUser, data) {
+export function finishSolicitation(idSolicitation) {
     return dispach => {
-        dispach({ type: SERVICES_REQUESTING })
+        dispach({ type: MY_SOLICITATION_REQUESTING })
         return api
-            .post(`/services/solicitation/${idUser}`, data)
+            .post(`/services/solicitation/${idSolicitation}`)
             .then(res => {
                 dispach({
-                    type: SERVICES_SUCCESS,
+                    type: MY_SOLICITATION_SUCCESS,
                     payload: res.data
                 })
             })
             .catch(err => {
                 dispach({
-                    type: SERVICES_FAILURE,
+                    type: MY_SOLICITATION_FAILURE,
                     payload: err
                 })
             })

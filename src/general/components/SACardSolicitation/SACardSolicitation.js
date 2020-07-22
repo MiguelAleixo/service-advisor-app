@@ -9,7 +9,7 @@ export default class SACardSolicitation extends Component {
     }
 
     render() {
-        const { requester, logradouro, numero, bairro, cep } = this.props;
+        const { requester, logradouro, numero, bairro, cep, message } = this.props;
 
         return (
             <Card style={style.card}>
@@ -37,7 +37,7 @@ export default class SACardSolicitation extends Component {
                     <Body>
                         <SAText>Mensagem de {requester}: </SAText>
                         <Text note style={{ fontSize: 16 }}>
-                            Cara preciso que você traga uma chave tipo C, pq meu chuveiro utiliza ela tambem
+                            {message}
                         </Text>
                     </Body>
                 </CardItem>

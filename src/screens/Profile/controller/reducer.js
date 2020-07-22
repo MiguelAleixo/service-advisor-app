@@ -1,31 +1,31 @@
 import {
-    SERVICES_REQUESTING,
-    SERVICES_SUCCESS,
-    SERVICES_FAILURE
+    MY_SOLICITATION_REQUESTING,
+    MY_SOLICITATION_SUCCESS,
+    MY_SOLICITATION_FAILURE
 } from './constants'
 
 export const INITIAL_STATE = {
     isRequesting: false,
     success: false,
     error: false,
-    content: []
+    content: {}
 }
 
-export default function services(state = INITIAL_STATE, action) {
+export default function mySolicitation(state = INITIAL_STATE, action) {
     switch (action.type) {
-        case SERVICES_REQUESTING:
+        case MY_SOLICITATION_REQUESTING:
             return {
                 ...state,
                 isRequesting: true
             }
-        case SERVICES_SUCCESS:
+        case MY_SOLICITATION_SUCCESS:
             return {
                 ...state,
                 isRequesting: false,
                 content: action.payload,
                 error: false
             }
-        case SERVICES_FAILURE:
+        case MY_SOLICITATION_FAILURE:
             return {
                 ...state,
                 isRequesting: false,

@@ -6,7 +6,6 @@ import {
 import api from '../../../services/api'
 
 export function getServices(idUser, idCategory) {
-    console.log('susususu', idUser)
     return dispach => {
         dispach({ type: SERVICES_REQUESTING })
         return api
@@ -26,15 +25,18 @@ export function getServices(idUser, idCategory) {
     }
 }
 
-export function registerSolicitation(idUser, data) {
+export function registerSolicitation(idUser, data, nav) {
     return dispach => {
         dispach({ type: SERVICES_REQUESTING })
         return api
             .post(`/services/solicitation/${idUser}`, data)
-            .then(res => {
+            .then(() => {
                 dispach({
-                    type: SERVICES_SUCCESS,
-                    payload: res.data
+                    type: SERVICES_SUCCESS
+                })
+                nav.reset({
+                    index: 0,
+                    routes: [{ name: 'Profile' }]
                 })
             })
             .catch(err => {

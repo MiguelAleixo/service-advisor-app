@@ -17,7 +17,7 @@ export default class SAFooter extends Component {
                     icon: 'handshake',
                     title: 'Meus Serviços',
                     route: 'MyServices',
-                    type:'FontAwesome5'
+                    type: 'FontAwesome5'
                 },
                 {
                     icon: 'user',
@@ -37,8 +37,9 @@ export default class SAFooter extends Component {
             <Footer>
                 <FooterTab style={{ backgroundColor: '#263238' }}>
                     {
-                        buttons.map(obj => (
+                        buttons.map((obj, i) => (
                             <Button
+                                key={i}
                                 style={(route.name !== obj.route) ? style.button : style.buttonActive}
                                 onPress={() => { navigation.navigate(obj.route); onChange() }} vertical>
                                 <Icon

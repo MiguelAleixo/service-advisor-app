@@ -25,15 +25,19 @@ export function getMySolicitation(idUser) {
     }
 }
 
-export function finishSolicitation(idSolicitation) {
+export function finishSolicitation(idSolicitation, data, nav) {
     return dispach => {
         dispach({ type: MY_SOLICITATION_REQUESTING })
         return api
-            .post(`/services/solicitation/${idSolicitation}`)
+            .post(`/services/solicitation/finish/${idSolicitation}`, data)
             .then(res => {
                 dispach({
                     type: MY_SOLICITATION_SUCCESS,
                     payload: res.data
+                })
+                nav.reset({
+                    index: 0,
+                    routes: [{ name: 'Profile' }]
                 })
             })
             .catch(err => {

@@ -34,7 +34,8 @@ class Profile extends Component {
                     id: 1,
                     name: 'Muito ruim'
                 }
-            ]
+            ],
+            avaliation: 5
         }
     }
 
@@ -48,9 +49,14 @@ class Profile extends Component {
         getMySolicitation(idUser)
     }
 
+    finishSolicitation = (idSolicitation, avaliation, nav) => {
+        const { finishSolicitation } = this.props
+        finishSolicitation(idSolicitation, { avaliation }, nav)
+    }
+
     render() {
-        const { mySolicitation, login } = this.props
-        const { avaliations } = this.state;
+        const { mySolicitation, login, navigation } = this.props
+        const { avaliations, avaliation } = this.state;
 
         return (
             <>
@@ -79,15 +85,17 @@ class Profile extends Component {
                                         {mySolicitation.content.idStatus > 1 && (
                                             <>
                                                 <Card>
-                                                    <SADropDown selected={(avaliation) => console.log('teste', avaliation)} name='Como foi o serviço prestado?' items={avaliations} />
+                                                    <SADropDown selected={(avaliation) => this.setState({ avaliation })} name='Como foi o serviço prestado?' items={avaliations} />
                                                 </Card>
                                                 <SAButton name='Finalizar'
-                                                    onPress={() => this.registerSolicitation(obj.id, message)} />
+                                                    onPress={() => {
+                                                        this.finishSolicitation(mySolicitation.content.idSolicitation, avaliation, navigation);
+                                                    }} />
                                             </>
                                         )}
                                     </>
                                 ) : (
-                                        <Text style={style.text} > Você não possui nenhuma solicitação no momento... </Text>
+                                        <Text style={style.text} > Você ainda não solicitou nenhum serviço no momento... </Text>
                                     )
                         }
                     </Content>

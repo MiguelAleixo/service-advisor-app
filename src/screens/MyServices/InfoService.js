@@ -83,11 +83,10 @@ class InfoService extends Component {
         }
     }
 
-    createMyService = (data, navigation) => {
+    createMyService = (data, nav) => {
         const { login: { idUser } } = this.props
         const { createMyService } = this.props
-        createMyService(idUser, data)
-        navigation.navigate('MyServices')
+        createMyService(idUser, data, nav)
     }
 
     handlerInput = (value, field) => {
@@ -120,7 +119,9 @@ class InfoService extends Component {
                 <Fab
                     style={{ backgroundColor: '#FFC107' }}
                     position="bottomRight"
-                    onPress={() => this.createMyService(service, navigation)}
+                    onPress={() =>
+                        this.createMyService(service, navigation)
+                    }
                 >
                     <Icon type="Feather" name="check" style={{ color: '#263238' }} />
                 </Fab>

@@ -11,6 +11,7 @@ export function getMyServices(idUser) {
         return api
             .get(`/my-services/${idUser}`)
             .then(res => {
+                console.log('RES', res.data)
                 dispach({
                     type: MY_SERVICES_SUCCESS,
                     payload: res.data
@@ -25,15 +26,18 @@ export function getMyServices(idUser) {
     }
 }
 
-export function createMyService(idUser, data) {
+export function createMyService(idUser, data, nav) {
     return dispach => {
         dispach({ type: MY_SERVICES_REQUESTING })
         return api
             .post(`/my-services/${idUser}`, data)
-            .then(res => {
+            .then(() => {
                 dispach({
-                    type: MY_SERVICES_SUCCESS,
-                    payload: res.data
+                    type: MY_SERVICES_SUCCESS
+                })
+                nav.reset({
+                    index: 0,
+                    routes: [{ name: 'MyServices' }]
                 })
             })
             .catch(err => {
@@ -45,15 +49,18 @@ export function createMyService(idUser, data) {
     }
 }
 
-export function acceptSolicitation(idSolicitation, data) {
+export function acceptSolicitation(idSolicitation, data, nav) {
     return dispach => {
         dispach({ type: MY_SERVICES_REQUESTING })
         return api
             .put(`/my-services/solicitation/${idSolicitation}`, data)
-            .then(res => {
+            .then(() => {
                 dispach({
-                    type: MY_SERVICES_SUCCESS,
-                    payload: res.data
+                    type: MY_SERVICES_SUCCESS
+                })
+                nav.reset({
+                    index: 0,
+                    routes: [{ name: 'MyServices' }]
                 })
             })
             .catch(err => {

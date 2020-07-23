@@ -21,14 +21,23 @@ export default class Routes extends Component {
                 }}
             >
                 <Stack.Screen
+                    options={{
+                        animationEnabled: false,
+                    }}
                     name="MyServices" component={MyServices}
                 />
 
                 <Stack.Screen
+                    options={{
+                        animationEnabled: false,
+                    }}
                     name="InfoService" component={InfoService}
                 />
 
                 <Stack.Screen
+                    options={{
+                        animationEnabled: false,
+                    }}
                     name="CallService" component={CallService}
                 />
             </Stack.Navigator>

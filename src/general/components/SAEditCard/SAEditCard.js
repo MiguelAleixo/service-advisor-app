@@ -25,7 +25,7 @@ export default class SAEditCard extends Component {
                             <Icon style={style.editIcon} name='create' />
                         </Button>
                         <Button transparent onPress={(idSolicitation && idStatus < 2) ? onService : null}>
-                            <Icon style={(idSolicitation && idStatus < 2) ? style.alert : style.icon} type='Fontisto' name='bell' />
+                            <Icon style={(idSolicitation && idStatus < 2) ? style.alert : style.icon} type='Feather' name='bell' />
                         </Button>
                     </CardItem>
                 </Card>

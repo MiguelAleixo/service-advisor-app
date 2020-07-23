@@ -9,13 +9,17 @@ export default class SACardSolicitation extends Component {
     }
 
     render() {
-        const { requester, logradouro, numero, bairro, cep, message } = this.props;
+        const { requester, logradouro, numero, bairro, cep, message, telefone } = this.props;
 
         return (
             <Card style={style.card}>
                 <CardItem bordered>
                     <SAText>Solicitante: </SAText>
                     <Text note style={{ fontSize: 16 }}> {requester} </Text>
+                </CardItem>
+                <CardItem bordered>
+                    <SAText>Telefone/Celular: </SAText>
+                    <Text note style={{ fontSize: 16 }}> {telefone} </Text>
                 </CardItem>
                 <CardItem bordered>
                     <SAText>Logradouro: </SAText>

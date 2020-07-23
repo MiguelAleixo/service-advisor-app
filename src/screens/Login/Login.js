@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { Container, Content, Form } from 'native-base';
+import { style } from './Styles';
+import { Image, View } from 'react-native';
+import { Container, Form } from 'native-base';
 import SAInput from '../../general/components/SAInput/SAInput';
 import SAButton from '../../general/components/SAButton/SAButton';
 import SAContent from '../../general/components/SAContent/SAContent';
@@ -37,6 +39,12 @@ class Login extends Component {
         return (
             <Container style={{ backgroundColor: '#263238' }}>
                 <SAContent>
+                    <View style={style.container}>
+                        <Image
+                            style={style.logo}
+                            source={require('../../assets/logo.png')}
+                        />
+                    </View>
                     <Form>
 
                         <SAInput color placeholder='ex: john@hotmail.com' name='Login' field='user' value={login} onChange={(login) => this.handlerInput(login, 'login')} />

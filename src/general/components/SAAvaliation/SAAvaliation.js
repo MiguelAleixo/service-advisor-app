@@ -11,11 +11,11 @@ export default class SAAvaliation extends Component {
         return (
             !small ? (
                 <Circle>
-                    <Text> {avaliation} </Text>
+                    <Text> {avaliation && avaliation.substring(0,3)} </Text>
                 </Circle>
             ) : (
                     <SmallCircle>
-                        <SmallText> {avaliation} </SmallText>
+                        <SmallText> {avaliation && avaliation.substring(0,3)} </SmallText>
                     </SmallCircle>
                 )
         );

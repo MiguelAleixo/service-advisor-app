@@ -14,7 +14,6 @@ import { connect } from 'react-redux'
 const Stack = createStackNavigator();
 
 function Main(props) {
-    console.log('id do usuário', props.login)
     return (
         props.login.idUser ? (
             <NavigationContainer>

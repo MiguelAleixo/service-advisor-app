@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Content, Fab, Icon } from 'native-base';
+import { Container, Content } from 'native-base';
 import SACardSolicitation from '../../general/components/SACardSolicitation/SACardSolicitation';
 import SAHeader from '../../general/components/SAHeader/SAHeader';
 import SAButton from '../../general/components/SAButton/SAButton';
@@ -12,15 +12,14 @@ class CallService extends Component {
         super(props);
     }
 
-    acceptSolicitation = (idSolicitation, data) => {
+    acceptSolicitation = (idSolicitation, data, nav) => {
         const { acceptSolicitation } = this.props;
-        acceptSolicitation(idSolicitation, data)
+        acceptSolicitation(idSolicitation, data, nav)
     }
 
     render() {
         const { navigation, route: { params } } = this.props;
         const solicitation = params;
-        console.log('teste', this.props)
 
         return (
             <Container style={{ backgroundColor: '#F5F5F5' }}>
@@ -34,13 +33,13 @@ class CallService extends Component {
                         bairro={solicitation.bairro}
                         cep={solicitation.cep}
                         requester={solicitation.requester}
+                        telefone={solicitation.telefone}
                         message={solicitation.message} />
                 </Content>
                 <SAButton name='Aceitar serviço'
-                    onPress={() => {
-                        this.acceptSolicitation(solicitation.idSolicitation, { idStatus: 2 });
-                        navigation.navigate('MyServices')
-                    }} />
+                    onPress={() =>
+                        this.acceptSolicitation(solicitation.idSolicitation, { idStatus: 2 }, navigation)
+                    } />
             </Container>
         );
     }

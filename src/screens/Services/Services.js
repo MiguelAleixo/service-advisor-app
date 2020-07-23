@@ -69,8 +69,9 @@ class Services extends Component {
 
                         {services.isRequesting ?
                             <Spinner color='#FFC107' /> :
-                            (services.content && services.content.map(obj => (
+                            (services.content && services.content.map((obj, i) => (
                                 <SACard
+                                    key={i}
                                     name={obj.name}
                                     image={obj.img}
                                     avaliation={obj.avaliation}

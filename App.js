@@ -18,7 +18,7 @@ const store = createStore(
     services,
     mySolicitation
   }),
-  applyMiddleware(logger, thunk)
+  applyMiddleware(thunk)
 )
 
 export default function App() {

@@ -17,20 +17,19 @@ class ServicesDetail extends Component {
 
     handlerInput = (value, field) => {
         this.setState({
-                ...this.state,
-                [field]: value
+            ...this.state,
+            [field]: value
         })
     }
 
-    registerSolicitation = (idService, message) => {
+    registerSolicitation = (idService, message, nav) => {
         const { login: { idUser } } = this.props
         const { registerSolicitation } = this.props
         const data = {
             idService,
             message
         }
-        console.log(data)
-        registerSolicitation(idUser, data)
+        registerSolicitation(idUser, data, nav)
     }
 
     render() {
@@ -52,10 +51,12 @@ class ServicesDetail extends Component {
                         time={obj.time}
                         description={obj.description}
                         value={obj.value} />
-                    <SATextArea name='Mensagem (opcional)' placeholder='ex: O modelo do chuveiro é...' 
-                    onChange={(message) => this.handlerInput(message, 'message')}/>
+                    <SATextArea name='Mensagem (opcional)'
+                        onChange={(message) => this.handlerInput(message, 'message')} />
                     <SAButton name='Quero esse serviço!'
-                        onPress={() => this.registerSolicitation(obj.id, message)} />
+                        onPress={() => {
+                            this.registerSolicitation(obj.id, message, navigation);
+                        }} />
                 </Content>
             </Container>
         );

@@ -29,8 +29,8 @@ export default class SADropDown extends Component {
                         })}
                 >
                     {
-                        items.map(obj => (
-                            <Picker.Item label={obj.name} value={obj.id} />
+                        items.map((obj, i) => (
+                            <Picker.Item key={i} label={obj.name} value={obj.id} />
                         ))
                     }
                 </Picker>

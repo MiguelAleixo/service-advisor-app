@@ -22,10 +22,16 @@ export default class Routes extends Component {
                 }}
             >
                 <Stack.Screen
+                    options={{
+                        animationEnabled: false,
+                    }}
                     name="Services" component={Services}
                 />
 
                 <Stack.Screen
+                    options={{
+                        animationEnabled: false,
+                    }}
                     name="ServiceDetail" component={ServiceDetail}
                 />
             </Stack.Navigator>

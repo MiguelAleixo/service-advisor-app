@@ -22,7 +22,7 @@ export default function myServices(state = INITIAL_STATE, action) {
             return {
                 ...state,
                 isRequesting: false,
-                content: action.payload,
+                content: action.payload || state.content,
                 error: false
             }
         case MY_SERVICES_FAILURE:
